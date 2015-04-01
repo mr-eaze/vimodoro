@@ -6,8 +6,9 @@ var application_root = __dirname,
     models           = require('./models'),
     Vimeo						 = require('vimeo-api').Vimeo;
 
-var lib	= new Vimeo('b65b6dfcfb9fae542ee0a00edf2572fca6e331ba', 'XpNxKCCuP/ZiRZ1yPSxRdwR1oOkc/i8PCzGPvWpFgeARZUsbyaHWjHpJjxAcrNQIrie3m8i65cNIn5b1vZYAVfd8NdcLNJ+jnr3rQYnbTC7Jx2vG8zd95PZFiFwPnHMM', '4eb961818286d4e11aae25a28373e694');
 var app = express();
+require('dotenv').load();
+var lib = new Vimeo(process.env.VIMEO_CLIENT_ID, process.env.VIMEO_CLIENT_SECRET, process.env.VIMEO_TOKEN);
 
 // Server Configuration
 app.use(logger('dev'));
