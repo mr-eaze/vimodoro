@@ -5,6 +5,7 @@
     "backbone": "^1.1.2",
     "body-parser": "^1.12.0",
     "browserify": "^9.0.3",
+    "dotenv": "^1.1.0",
     "express": "^4.12.2",
     "handlebars": "^3.0.0",
     "jquery": "^2.1.3",
