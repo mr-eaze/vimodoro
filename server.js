@@ -117,14 +117,14 @@ app.put('/users/:id/remove_keyword', function(req, res) {
 
 // KEYWORD ROUTES
 app.get('/keywords', function(req, res) {
-	Keyword.findAll()
+	Keyword.findAll({include: User})
 		.then(function(keywords) {
 			res.send(keywords);
 		});
 });
 
 app.get('/keywords/:id', function(req, res) {
-	Keyword.findOne(req.params.id)
+	Keyword.findOne({where: {id: req.params.id}, include:[User]})
 		.then(function(keyword) {
 			res.send(keyword);
 		});
