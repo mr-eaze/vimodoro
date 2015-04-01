@@ -12,13 +12,15 @@
 	<script src="js/collections/keywords.js"></script>
 	<script src="js/collections/users.js"></script>
 	<script src="js/views/preferences.js"></script>
+	<script src="js/views/keyword.js"></script>
+	<script src="js/views/keywords.js"></script>
 </head>
 <body>
 	<h1>Vimodoro</h1>
-	<div id="main-view"></div>
+	<div id="preferences-view"></div>
 
 
-	<template id="preferences">
+	<template id="preferences-template">
 		<div id="interval-set">
 			<span>I want to work for</span>
 			<input id="interval-input" type="text" placeholder={{interval}}>
@@ -34,6 +36,10 @@
 			<div id="keywords-box"></div>
 		</div>
 		<button id="start-interval">Go!</button>
+	</template>
+
+	<template id="keyword-template">
+		<div id="keyword">{{term}}</div>
 	</template>
 </body>
 </html>
