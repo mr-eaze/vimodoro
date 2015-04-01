@@ -11,8 +11,29 @@
 	<script src="js/models/user.js"></script>
 	<script src="js/collections/keywords.js"></script>
 	<script src="js/collections/users.js"></script>
+	<script src="js/views/preferences.js"></script>
 </head>
 <body>
-	<p>Hello</p>
+	<h1>Vimodoro</h1>
+	<div id="main-view"></div>
+
+
+	<template id="preferences">
+		<div id="interval-set">
+			<span>I want to work for</span>
+			<input id="interval-input" type="text" placeholder={{interval}}>
+			<span>minutes</span>
+		</div>
+		<div id="duration-set">
+			<span>And I want to take</span>
+			<input id="duration-input" type="text" placeholder={{duration}}>
+			<span>minute breaks.</span>
+		</div>
+		<div id="keyword-selector">
+			<span>I'm interested in...</span>
+			<div id="keywords-box"></div>
+		</div>
+		<button id="start-interval">Go!</button>
+	</template>
 </body>
 </html>
