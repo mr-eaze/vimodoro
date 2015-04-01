@@ -8,6 +8,7 @@ var application_root = __dirname,
 
 var app = express();
 require('dotenv').load();
+
 var lib = new Vimeo(process.env.VIMEO_CLIENT_ID, process.env.VIMEO_CLIENT_SECRET, process.env.VIMEO_TOKEN);
 
 var User = models.users;
