@@ -25,6 +25,7 @@ app.use( express.static( path.join( application_root, 'browser' )))
 // Export app as module
 module.exports = app;
 
+// USER ROUTES
 // Request 50 videos with query 'search_term'
 app.get('/videos', function(req, res) {
 	lib.request({
@@ -109,6 +110,49 @@ app.put('/users/:id/remove_keyword', function(req, res) {
 				.then(function(keyword) {
 					user.removeKeyword(keyword);
 					res.send('success');
+				});
+		});
+});
+
+
+// KEYWORD ROUTES
+app.get('/keywords', function(req, res) {
+	Keyword.findAll()
+		.then(function(keywords) {
+			res.send(keywords);
+		});
+});
+
+app.get('/keywords/:id', function(req, res) {
+	Keyword.findOne(req.params.id)
+		.then(function(keyword) {
+			res.send(keyword);
+		});
+});
+
+app.post('/keywords', function(req, res) {
+	Keyword.create(req.body)
+		.then(function(keyword) {
+			res.send(keyword);
+		});
+});
+
+app.put('/keywords/:id', function(req, res) {
+	Keyword.findOne(req.params.id)
+		.then(function(keyword) {
+			keyword.update(req.body)
+				.then(function(updatedKeyword) {
+					res.send(updatedKeyword);
+				});
+		});
+});
+
+app.delete('/keywords/:id', function(req, res) {
+	Keyword.findOne(req.params.id)
+		.then(function(keyword) {
+			keyword.destroy()
+				.then(function() {
+					res.send(keyword);
 				});
 		});
 });
