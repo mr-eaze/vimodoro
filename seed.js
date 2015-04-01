@@ -59,12 +59,11 @@ var seedDatabase = function () {
 				interval: userData.interval,
 				duration: userData.duration
 			});
-		}
 	});
 	keywords.forEach( function (keyword) {
 		Keyword
 			.create({
-				term: keyword.term;
+				term: keyword.term
 			});
 	});
 };
