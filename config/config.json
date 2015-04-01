@@ -2,21 +2,21 @@
   "development": {
     "username": null,
     "password": null,
-    "database": "vimodoro_app_development",
+    "database": "vimodoro_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": null,
     "password": null,
-    "database": "vimodoro_app_test",
+    "database": "vimodoro_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": null,
     "password": null,
-    "database": "vimodoro_app_production",
+    "database": "vimodoro_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

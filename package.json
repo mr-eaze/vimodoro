@@ -1,5 +1,5 @@
 {
-  "name": "vimodoro_app",
+  "name": "vimodoro",
   "version": "0.0.1",
   "dependencies": {
     "backbone": "^1.1.2",
