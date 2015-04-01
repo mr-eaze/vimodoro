@@ -8,7 +8,11 @@ var application_root = __dirname,
 
 var app = express();
 require('dotenv').load();
+
 var lib = new Vimeo(process.env.VIMEO_CLIENT_ID, process.env.VIMEO_CLIENT_SECRET, process.env.VIMEO_TOKEN);
+
+var User = models.users;
+var Keyword = models.keywords;
 
 // Server Configuration
 app.use(logger('dev'));
@@ -42,6 +46,71 @@ app.get('/videos', function(req, res) {
 			res.send(body.data);
 		}
 	});
+});
+
+app.get('/users', function(req, res) {
+	User.findAll({include: Keyword})
+		.then(function(users) {
+			res.send(users);
+		});
+});
+
+app.get('/users/:id', function(req, res) {
+	User.findOne({where:
+		{id: req.params.id}, include: [Keyword]})
+		.then(function(user) {
+			res.send(user);
+		}); 
+});
+
+app.post('/users', function(req, res) {
+	User.create(req.body)
+		.then(function(user) {
+			res.send(user);
+		});
+});
+
+app.put('/users/:id', function(req, res) {
+	User.findOne(req.params.id)
+		.then(function(user) {
+			User.update(req.body)
+				.then(function(updatedUser) {
+					res.send(updatedUser);
+				});
+		});
+});
+
+app.delete('/users/:id', function(req, res) {
+	User.findOne(req.params.id)
+		.then(function(user) {
+			User.destroy()
+				.then(function() {
+					res.send(user);
+				});
+		});
+});
+
+// in AJAX call - data: {keyword_id: X}
+app.put('/users/:id/add_keyword', function(req, res) {
+	User.findOne(req.params.id)
+		.then(function(user) {
+			Keyword.findOne(req.body.keyword_id)
+				.then(function(keyword) {
+					user.addKeyword(keyword);
+					res.send('success');
+				});
+		});
+});
+
+app.put('/users/:id/remove_keyword', function(req, res) {
+	User.findOne(req.params.id)
+		.then(function(user) {
+			Keyword.findOne(req.body.keyword_id)
+				.then(function(keyword) {
+					user.removeKeyword(keyword);
+					res.send('success');
+				});
+		});
 });
 
 app.listen(3000, function() {
