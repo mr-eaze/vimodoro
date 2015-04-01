@@ -20,7 +20,6 @@ app.use( express.static( path.join( application_root, 'browser' )))
 // Export app as module
 module.exports = app;
 
-
 // Request 50 videos with query 'search_term'
 app.get('/videos', function(req, res) {
 	lib.request({
