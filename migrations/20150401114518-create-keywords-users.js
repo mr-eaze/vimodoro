@@ -3,10 +3,10 @@
 module.exports = {
   up: function(migration, DataTypes, done) {
     migration.createTable("keywords_users", {
-    	keyword_id {
+    	keyword_id: {
     		type: DataTypes.INTEGER
     	},
-    	user_id {
+    	user_id: {
     		type: DataTypes.INTEGER
     	}
     }).done(done);
