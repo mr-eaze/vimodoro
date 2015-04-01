@@ -6,7 +6,10 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false,
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        keywords.belongsToMany(models.users, {
+          through: 'keywords_users',
+          foreignKey: 'keyword_id'
+        });
       }
     }
   });
