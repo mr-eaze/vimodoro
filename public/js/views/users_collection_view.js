@@ -1,6 +1,6 @@
 App.Views.UserPreview = Backbone.View.extend({
 	
-	el: '#preview-list-view',
+	el: '#login-view',
 
 	initialize: function() {
 		console.log('New User Preview Created');
@@ -9,11 +9,33 @@ App.Views.UserPreview = Backbone.View.extend({
 	},
 
 	renderUsers: function() {
-		this.$el.html('');
 		this.collection.each(function(user) {
-			this.$el.append(
+			this.$el.prepend(
 				userTemplate(user.toJSON())
 			)
 		}.bind(this));
+	},
+
+	events: {
+		'click #create-user': 'createUser',
+		'click .user': 'hideView'
+	},
+
+	createUser: function() {
+		var newUser = $('#name').val();
+		$.ajax({
+			url: '/users',
+			method: 'POST',
+			data: {
+				name:newUser,
+				interval:60,
+				duration:60
+			}
+		});
+		this.$el.hide();
+	},
+
+	hideView: function() {
+		this.$el.hide();
 	}
 });
