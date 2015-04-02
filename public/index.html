@@ -14,11 +14,36 @@
 	<script src="js/views/preferences.js"></script>
 	<script src="js/views/keyword.js"></script>
 	<script src="js/views/keywords.js"></script>
+	<script src="js/views/userPreviewView.js"></script>
 </head>
 <body>
-	<h1>Vimodoro</h1>
+
+	<div id='login-view'>
+		<h1>VIMODORO</h1>
+		<section id='preview-list-view'>
+		</section>
+		<hr>
+		<div>
+			<span>
+				<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
+			</span>
+		</div>
+		<br>
+		<div>
+			<button class='create-user'>Create User</button>
+		</div>	
+	</div>
+
 	<div id="preferences-view"></div>
 
+<!--TEMPLATES -->
+	<template id='user-preview-template'>
+		<div class='user'>
+			<p class='user-title'>
+				{{name}}
+			</p>	
+		</div>
+	</template>
 
 	<template id="preferences-template">
 		<div id="interval-set">
@@ -41,5 +66,6 @@
 	<template id="keyword-template">
 		<div id="keyword">{{term}}</div>
 	</template>
+
 </body>
 </html>

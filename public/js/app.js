@@ -11,6 +11,7 @@ $(function() {
 	App.users = new App.Collections.Users();
 	App.users.fetch(
 		{success: function() {
+			App.userPreviewView = new App.Views.UserPreview({ collection: App.users });
 			App.currentUser = App.users.at(0);
 			App.preferences = new App.Views.Preferences({model: App.currentUser});
 			App.keywords.fetch(
