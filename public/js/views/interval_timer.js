@@ -23,25 +23,34 @@ App.Views.IntervalTimer = Backbone.View.extend({
 	startTimer: function() {
 		console.log('start timer');
 
-		setInterval( function() { 
-			console.log("another second has passed"); 
+		$('#timer-seconds').html(5);
+		$('#timer-minutes').html(0);
+		var timer = setInterval( function() { 
+
+			console.log('another second');
 			
 			var seconds = parseInt( $('#timer-seconds').html() );
-			console.log(seconds);
+			var minutes = parseInt( $('#timer-minutes').html() );
 				
 				if (seconds === 0) {
-					seconds = 59;
-					var minutes = parseInt( $('#timer-minutes').html() );
-					minutes -= 1;
-					$('#timer-minutes').html(minutes);
+					if (minutes === 0) {
+						clearInterval(timer);
+						this.launchVideo();
+					} else {
+						seconds = 59;
+						minutes -= 1;
+						$('#timer-minutes').html(minutes);
+						$('#timer-seconds').html(seconds);
+					}
 				} else {
 					seconds -= 1;
+					$('#timer-seconds').html(seconds);
 				};
-				$('#timer-seconds').html(seconds);
+				
 
-		}, 1000);
+		}.bind(this), 1000);
 
-		setInterval( function() { alert("video launched"); }, (this.intervalTime * 1000) );
+		// setInterval( function() { alert("video launched"); }, (this.intervalTime * 60000) );
 	},
 
 	launchVideo: function() {
