@@ -3,14 +3,13 @@ App.Views.IntervalTimer = Backbone.View.extend({
 	el: '#display',
 
 	events: {
-		// 'click #go-back-button': .goBack()
+		'click #go-back-button': 'goBack'
 	},
 
 	initialize: function() {
 		console.log('Interval Timer view launched');
 		this.model    = App.currentUser;
 		this.template = Handlebars.compile($('#interval-timer-template').html());
-		this.render();
 	},
 
 	render: function() {
@@ -23,9 +22,7 @@ App.Views.IntervalTimer = Backbone.View.extend({
 	startTimer: function() {
 		console.log('start timer');
 
-		$('#timer-seconds').html(5);
-		$('#timer-minutes').html(0);
-		var timer = setInterval( function() { 
+		this.timer = setInterval( function() { 
 
 			console.log('another second');
 			
@@ -34,7 +31,7 @@ App.Views.IntervalTimer = Backbone.View.extend({
 				
 				if (seconds === 0) {
 					if (minutes === 0) {
-						clearInterval(timer);
+						clearInterval(this.timer);
 						this.launchVideo();
 					} else {
 						seconds = 59;
@@ -49,13 +46,17 @@ App.Views.IntervalTimer = Backbone.View.extend({
 				
 
 		}.bind(this), 1000);
-
-		// setInterval( function() { alert("video launched"); }, (this.intervalTime * 60000) );
 	},
 
 	launchVideo: function() {
 		// launch video modal view
 		alert("video launched");
+	},
+
+	goBack: function() {
+		clearInterval(this.timer);
+		this.$el.hide();
+		App.preferences.$el.show();
 	}
 
 });
