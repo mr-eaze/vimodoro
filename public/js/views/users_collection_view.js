@@ -22,6 +22,7 @@ App.Views.UserPreview = Backbone.View.extend({
 	},
 
 	createUser: function() {
+		// TRY COLLECTION.CREATE()
 		var newUser = $('#name').val();
 		$.ajax({
 			url: '/users',
