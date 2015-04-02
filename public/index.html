@@ -11,16 +11,65 @@
 	<script src="js/models/user.js"></script>
 	<script src="js/collections/keywords.js"></script>
 	<script src="js/collections/users.js"></script>
+	<script src="js/views/preferences.js"></script>
+	<script src="js/views/keyword.js"></script>
+	<script src="js/views/keywords.js"></script>
+	<script src="js/views/userPreviewView.js"></script>
 	<script src="js/views/interval_timer.js"></script>
-
 </head>
 <body>
-	
-	<p> vimodoro </p>
+
+	<div id='login-view'>
+		<h1>VIMODORO</h1>
+		<section id='preview-list-view'>
+		</section>
+		<hr>
+		<div>
+			<span>
+				<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
+			</span>
+		</div>
+		<br>
+		<div>
+			<button class='create-user'>Create User</button>
+		</div>	
+	</div>
+
+	<div id="preferences-view"></div>
 
 	<div id="display"></div>
+<!--TEMPLATES -->
+	<template id='user-preview-template'>
+		<div class='user'>
+			<p class='user-title'>
+				{{name}}
+			</p>	
+		</div>
+	</template>
 
- <!-- handlebars interval-timer template -->
+	<template id="preferences-template">
+		<div id="interval-set">
+			<span>I want to work for</span>
+			<input id="interval-input" type="text" value={{interval}}>
+			<span>minutes</span>
+		</div>
+		<div id="duration-set">
+			<span>And I want to take</span>
+			<input id="duration-input" type="text" value={{duration}}>
+			<span>minute breaks.</span>
+		</div>
+		<div id="keyword-selector">
+			<span>I'm interested in...</span>
+			<div id="keywords-box"></div>
+		</div>
+		<button id="start-interval">Go!</button>
+	</template>
+
+	<template id="keyword-template">
+		<div id="keyword">{{term}}</div>
+	</template>
+
+	 <!-- handlebars interval-timer template -->
  	<template id="interval-timer-template">
 		<div id="interval-timer">
 			<span id="timer-minutes"> {{interval}} </span>

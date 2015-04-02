@@ -4,7 +4,7 @@ var application_root = __dirname,
     path             = require('path'),
     logger           = require('morgan'),
     models           = require('./models'),
-    Vimeo						 = require('vimeo-api').Vimeo;
+    Vimeo			 = require('vimeo-api').Vimeo;
 
 var app = express();
 require('dotenv').load();
@@ -74,7 +74,7 @@ app.post('/users', function(req, res) {
 app.put('/users/:id', function(req, res) {
 	User.findOne(req.params.id)
 		.then(function(user) {
-			User.update(req.body)
+			user.update(req.body)
 				.then(function(updatedUser) {
 					res.send(updatedUser);
 				});
@@ -84,7 +84,7 @@ app.put('/users/:id', function(req, res) {
 app.delete('/users/:id', function(req, res) {
 	User.findOne(req.params.id)
 		.then(function(user) {
-			User.destroy()
+			user.destroy()
 				.then(function() {
 					res.send(user);
 				});
