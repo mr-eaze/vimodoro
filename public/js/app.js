@@ -10,5 +10,5 @@ $(function() {
 	App.keywords = new App.Collections.Keywords();
 	App.users = new App.Collections.Users();
 	App.userPreviewView = new App.Views.UserPreview({collection: App.users});
-
+	
 });
