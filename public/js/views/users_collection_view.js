@@ -9,7 +9,6 @@ App.Views.UserPreview = Backbone.View.extend({
 	},
 
 	renderUsers: function() {
-		this.$el.html('');
 		this.collection.each(function(user) {
 			this.$el.prepend(
 				userTemplate(user.toJSON())
@@ -33,10 +32,10 @@ App.Views.UserPreview = Backbone.View.extend({
 				duration:60
 			}
 		});
-		this.$el.empty();
+		this.$el.hide();
 	},
 
 	hideView: function() {
-		this.$el.empty();
+		this.$el.hide();
 	}
 });
