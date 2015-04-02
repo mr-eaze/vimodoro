@@ -9,6 +9,7 @@ var application_root = __dirname,
 var app = express();
 require('dotenv').load();
 
+// Vimeo suggested syntax for instantiating module
 var lib = new Vimeo(process.env.VIMEO_CLIENT_ID, process.env.VIMEO_CLIENT_SECRET, process.env.VIMEO_TOKEN);
 
 var User = models.users;

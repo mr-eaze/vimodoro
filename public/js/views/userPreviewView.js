@@ -5,18 +5,14 @@ App.Views.UserPreview = Backbone.View.extend({
 	initialize: function() {
 		console.log('New User Preview Created');
 		userTemplate = Handlebars.compile($('#user-preview-template').html());
-		this.getUserData();
+		this.listenTo(this.collection, 'sync', this.renderUsers);
 	},
 
-	getUserData: function() {
-		$.get('/users').done(this.renderUsers);
-	},
-
-	renderUsers: function(usersData) {
-		for (var i = 0; i < usersData.length; i++) {
-			$('#preview-list-view').append(
-				userTemplate(usersData[i])
-			);
-		};
+	renderUsers: function() {
+		this.collection.each(function(user) {
+			this.$el.append(
+				userTemplate(user.toJSON())
+			)
+		}.bind(this));
 	}
 });
