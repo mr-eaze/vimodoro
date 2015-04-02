@@ -36,13 +36,15 @@
 		</div>
 	</div>	
 
+<!-- VIEWS -->
+
 	<div id="preferences-view"></div>
+	<div id="timer-view"></div>
+	<div id="video-modal-view"></div>
 
-	<div id="display"></div>
 
-	<div id="modal"></div>
-	
-<!--TEMPLATES -->
+<!-- TEMPLATES -->
+
 	<template id='user-preview-template'>
 		<div class='user'>
 			<p id='user-name'>
@@ -73,19 +75,43 @@
 		<div id="keyword">{{term}}</div>
 	</template>
 
-	 <!-- handlebars interval-timer template -->
+	 <!-- interval-timer template -->
  	<template id="interval-timer-template">
 		<div id="interval-timer">
 			<span id="timer-minutes"> {{interval}} </span>
-			<span id="timer-seconds"> 00 </span>
+			<span id="timer-seconds">      00 		 </span>
 		</div>
-	 <!-- click button to go back to user preferences page -->
+	 <!-- back button: go back to user preferences page -->
 		<button id="go-back-button"></button>
 	</template>		
 
-	<template id="video-player">
-		<div id="play-window">{{{html}}}</div>
+	 <!-- video modal -->
+	<template id="video-modal-template">
+		<div id="modal-background">
+			<div id="video-container">
+				{{{html}}}
+			</div>
+		</div>
 	</template>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
