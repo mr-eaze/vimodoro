@@ -22,8 +22,6 @@ App.Views.Preferences = Backbone.View.extend({
 		this.model.set('interval', newInterval);
 		this.model.set('duration', newDuration);
 		this.model.sync('update', App.currentUser);
-		// this.updateInterval(newInterval);
-		// this.updateDuration(newDuration);
 		this.getVideos();
 		this.$el.hide();
 		App.timer.render();
@@ -32,13 +30,11 @@ App.Views.Preferences = Backbone.View.extend({
 
 	pickRandomInterest: function() {
 		var interests = this.model.get('keywords');
-		debugger;
 		return interests[Math.floor(Math.random() * interests.length)].term;
 	},
 
 	getVideos: function() {
 		var keyword = this.pickRandomInterest();
-		debugger;
 		$.ajax({
 			url: '/videos',
 			method: 'GET',
@@ -65,22 +61,5 @@ App.Views.Preferences = Backbone.View.extend({
 			}
 		}
 		App.currentVideo = currentBestVideo;
-		// RENDER INTERVAL VIEW
 	}
-
-	// updateInterval: function(newInterval) {
-	// 	$.ajax({
-	// 		url: '/users/' + App.currentUser.get('id'),
-	// 		method: 'PUT',
-	// 		data: {interval: newInterval}
-	// 	});
-	// },
-
-	// updateDuration: function(newDuration) {
-	// 	$.ajax({
-	// 		url: '/users/' + App.currentUser.get('id'),
-	// 		method: 'PUT',
-	// 		data: {duration: newDuration}
-	// 	});
-	// }
 });

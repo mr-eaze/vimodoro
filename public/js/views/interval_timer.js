@@ -60,6 +60,3 @@ App.Views.IntervalTimer = Backbone.View.extend({
 	}
 
 });
-
-
-
