@@ -16,6 +16,7 @@
 	<script src="js/views/keywords.js"></script>
 	<script src="js/views/userPreviewView.js"></script>
 	<script src="js/views/interval_timer.js"></script>
+	<script src="js/views/video_modal.js"></script>
 </head>
 <body>
 
@@ -35,10 +36,17 @@
 		</div>	
 	</div>
 
+<!-- VIEWS -->
+
 	<div id="preferences-view"></div>
 
-	<div id="display"></div>
-<!--TEMPLATES -->
+	<div id="timer-view"></div>
+
+	<div id="video-modal-view"></div>
+
+
+<!-- TEMPLATES -->
+
 	<template id='user-preview-template'>
 		<div class='user'>
 			<p class='user-title'>
@@ -69,15 +77,40 @@
 		<div id="keyword">{{term}}</div>
 	</template>
 
-	 <!-- handlebars interval-timer template -->
+	 <!-- interval-timer template -->
  	<template id="interval-timer-template">
 		<div id="interval-timer">
 			<span id="timer-minutes"> {{interval}} </span>
-			<span id="timer-seconds"> 00 </span>
+			<span id="timer-seconds">      00 		 </span>
 		</div>
-	 <!-- click button to go back to user preferences page -->
+	 <!-- back button: go back to user preferences page -->
 		<button id="go-back-button"></button>
 	</template>		
 
+	 <!-- video modal -->
+	<template id='video-modal-template'>
+		<iframe src="{{video-url}}" frameborder="0"></iframe>
+	</template>		
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

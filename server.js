@@ -4,7 +4,7 @@ var application_root = __dirname,
     path             = require('path'),
     logger           = require('morgan'),
     models           = require('./models'),
-    Vimeo			 = require('vimeo-api').Vimeo;
+    Vimeo			 			 = require('vimeo-api').Vimeo;
 
 var app = express();
 require('dotenv').load();
