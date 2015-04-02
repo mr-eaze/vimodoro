@@ -33,7 +33,8 @@ App.Views.Preferences = Backbone.View.extend({
 			url: '/videos',
 			method: 'GET',
 			data: {
-				search_term: keyword
+				search_term: keyword,
+				api: 1
 			}
 		})
 		.done(this.pickOneVideo.bind(this));
@@ -60,5 +61,22 @@ App.Views.Preferences = Backbone.View.extend({
 			}
 		}.bind(this));
 		App.currentVideo = currentBestVideo;
+		this.parseVideoHtml();
+	},
+
+	parseVideoHtml: function() {
+		App.currentVideo.html;
+		$.ajax({
+			url: 'https://vimeo.com/api/oembed.json',
+			method: 'GET',
+			data: {
+				url: App.currentVideo.html.split('"')[1],
+				autoplay: 1,
+				api: 1
+			}
+		})
+		.done(function(data) {
+			App.currentVideo = data;
+		});
 	}
 });

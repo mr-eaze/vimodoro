@@ -5,6 +5,7 @@
 	<title> vimodoro </title>
   <link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https:////f.vimeocdn.com/js/froogaloop2.min.js"></script>
 	<script src="bundle.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/models/keyword.js"></script>
@@ -16,6 +17,7 @@
 	<script src="js/views/keywords.js"></script>
 	<script src="js/views/users_collection_view.js"></script>
 	<script src="js/views/interval_timer.js"></script>
+	<script src="js/views/video_modal.js"></script>
 </head>
 <body>
 
@@ -37,6 +39,8 @@
 	<div id="preferences-view"></div>
 
 	<div id="display"></div>
+
+	<div id="modal"></div>
 	
 <!--TEMPLATES -->
 	<template id='user-preview-template'>
@@ -78,6 +82,10 @@
 	 <!-- click button to go back to user preferences page -->
 		<button id="go-back-button"></button>
 	</template>		
+
+	<template id="video-player">
+		<div id="play-window">{{{html}}}</div>
+	</template>
 
 </body>
 </html>
