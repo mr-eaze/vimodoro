@@ -7,4 +7,5 @@ var App = {
 
 $(function() {
 	console.log('Loaded, bro.');
+	App.users = new App.Collections.Users();
 });

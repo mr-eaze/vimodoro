@@ -11,8 +11,24 @@
 	<script src="js/models/user.js"></script>
 	<script src="js/collections/keywords.js"></script>
 	<script src="js/collections/users.js"></script>
+	<script src="js/views/interval_timer.js"></script>
+
 </head>
 <body>
-	<p>Hello</p>
+	
+	<p> vimodoro </p>
+
+	<div id="display"></div>
+
+ <!-- handlebars interval-timer template -->
+ 	<template id="interval-timer-template">
+		<div id="interval-timer">
+			<span id="timer-minutes"> {{interval}} </span>
+			<span id="timer-seconds"> 00 </span>
+		</div>
+	 <!-- click button to go back to user preferences page -->
+		<button id="go-back-button"></button>
+	</template>		
+
 </body>
 </html>
