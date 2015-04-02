@@ -11,6 +11,7 @@ App.Collections.Users = Backbone.Collection.extend({
 				App.keywords.fetch(
 					{success: function() {
 							App.keywordsView = new App.Views.KeywordsView({collection: App.keywords});
+							App.timer = new App.Views.IntervalTimer();
 					}
 				});
 			}
