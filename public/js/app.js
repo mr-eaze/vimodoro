@@ -22,17 +22,3 @@ $(function() {
 		}
 	});
 });
-
-
-
-
-
-
-
-
-
-	// App.keywords.fetch(
-	// 	{success: function() {
-	// 		App.keywordsView = new App.Views.KeywordsView({collection: App.keywords});
-	// 	}
-	// });

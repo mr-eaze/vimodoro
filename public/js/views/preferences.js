@@ -1,6 +1,5 @@
 App.Views.Preferences = Backbone.View.extend({
 	el: '#preferences-view',
-	model: App.currentUser,
 	initialize: function() {
 		console.log('new preferences view created');
 		this.template = Handlebars.compile($('#preferences-template').html());
@@ -20,13 +19,52 @@ App.Views.Preferences = Backbone.View.extend({
 	startInterval: function() {
 		var newInterval = parseInt($('#interval-input').val());
 		var newDuration = parseInt($('#duration-input').val());
-		App.currentUser.set('interval', newInterval);
-		App.currentUser.set('duration', newDuration);
+		this.model.set('interval', newInterval);
+		this.model.set('duration', newDuration);
+		this.model.sync('update', App.currentUser);
 		debugger;
 		// this.updateInterval(newInterval);
 		// this.updateDuration(newDuration);
+		this.getVideos();
 		$('#preferences-view').html('');
 		// Start Interval!!!
+	},
+
+	pickRandomInterest: function() {
+		var interests = this.model.get('keywords');
+		return interests[Math.floor(Math.random() * interests.length)].term;
+	},
+
+	getVideos: function() {
+		var keyword = this.pickRandomInterest();
+		$.ajax({
+			url: '/videos',
+			method: 'GET',
+			data: {
+				search_term: keyword
+			}
+		})
+		.done(this.pickOneVideo.bind(this));
+	},
+
+	pickOneVideo: function(data) {
+		var videos = data.map(function(video) {
+			return {
+				uri: video.uri,
+				duration: video.duration,
+				html: video.embed.html
+			};
+		});
+		var currentBestVideo = {};
+		var currentBestDuration = 100000;
+		for (var i = 0; i < videos.length; i++) {
+			if (Math.abs(videos[i].duration - (this.model.get('duration') * 60)) < currentBestDuration) {
+				currentBestVideo = videos[i];
+			}
+		}
+		App.currentVideo = currentBestVideo;
+		debugger;
+		// RENDER INTERVAL VIEW
 	}
 
 	// updateInterval: function(newInterval) {
