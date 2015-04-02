@@ -18,25 +18,19 @@ App.Views.UserPreview = Backbone.View.extend({
 
 	events: {
 		'click #create-user': 'createUser',
-		'click .user': 'hideView'
+		'click #user-name': 'setUser'
 	},
 
 	createUser: function() {
-		// TRY COLLECTION.CREATE()
 		var newUser = $('#name').val();
-		$.ajax({
-			url: '/users',
-			method: 'POST',
-			data: {
-				name:newUser,
-				interval:60,
-				duration:60
-			}
-		});
+		var newUserModel = new App.Models.User({name:newUser});
+		App.currentUser = this.collection.create(newUserModel);
 		this.$el.hide();
 	},
 
-	hideView: function() {
+	setUser: function() {
+		var user = $('#user-name').text().trim();
+		App.currentUser = this.collection.where({ name: user });
 		this.$el.hide();
 	}
 });
