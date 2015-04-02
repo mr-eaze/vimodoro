@@ -39,9 +39,7 @@
 <!-- VIEWS -->
 
 	<div id="preferences-view"></div>
-
 	<div id="timer-view"></div>
-
 	<div id="video-modal-view"></div>
 
 
@@ -88,9 +86,13 @@
 	</template>		
 
 	 <!-- video modal -->
-	<template id='video-modal-template'>
-		<iframe src="{{video-url}}" frameborder="0"></iframe>
-	</template>		
+	<template id="video-modal-template">
+		<div id="modal-background" style="background-color:black, opacity:0.3">
+			<div id="video-container">
+				{{html}}
+			</div>
+		</div>
+	</template>
 
 
 </body>
