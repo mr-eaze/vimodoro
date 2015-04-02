@@ -2,7 +2,6 @@ App.Views.KeywordsView = Backbone.View.extend({
 	el: '#keywords-box',
 	initialize: function() {
 		console.log('new keywords collection view created');
-		console.log(this.el);
 		this.renderAll();
 	},
 	renderAll: function() {
@@ -13,12 +12,12 @@ App.Views.KeywordsView = Backbone.View.extend({
 			// keyworduserlist: the list of users of a particular keyword
 			var keywordUserList = keyword.model.get('users');
 			// turn keyworduserlist from a list of models to a list of names
-			keywordUserList = keywordUserList.map(function(keywordUser) {
+			var keywordUserNames = keywordUserList.map(function(keywordUser) {
 				return keywordUser.name;
 			});
 			var name = App.currentUser.get('name');
 			// if the name of the current user is in the list of keywordusers, preselect it
-			if (keywordUserList.indexOf(name) !== -1) {
+			if (keywordUserNames.indexOf(name) !== -1) {
 				keyword.$el.addClass('selected');
 			}
 			this.$el.append(keyword.el);

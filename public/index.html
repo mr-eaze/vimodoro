@@ -14,27 +14,26 @@
 	<script src="js/views/preferences.js"></script>
 	<script src="js/views/keyword.js"></script>
 	<script src="js/views/keywords.js"></script>
-	<script src="js/views/userPreviewView.js"></script>
+	<script src="js/views/users_collection_view.js"></script>
 	<script src="js/views/interval_timer.js"></script>
 	<script src="js/views/video_modal.js"></script>
 </head>
 <body>
 
+	<h1>VIMODORO</h1>
+
 	<div id='login-view'>
-		<h1>VIMODORO</h1>
-		<section id='preview-list-view'>
-		</section>
 		<hr>
 		<div>
 			<span>
 				<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
 			</span>
+			<span>
+				<button id='create-user'>Create User</button>
+			</span>	
+		<br><br>
 		</div>
-		<br>
-		<div>
-			<button class='create-user'>Create User</button>
-		</div>	
-	</div>
+	</div>	
 
 <!-- VIEWS -->
 
@@ -47,7 +46,7 @@
 
 	<template id='user-preview-template'>
 		<div class='user'>
-			<p class='user-title'>
+			<p id='user-name'>
 				{{name}}
 			</p>	
 		</div>

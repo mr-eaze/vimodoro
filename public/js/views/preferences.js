@@ -17,28 +17,18 @@ App.Views.Preferences = Backbone.View.extend({
 	},
 
 	startInterval: function() {
-		var newInterval = parseInt($('#interval-input').val());
-		var newDuration = parseInt($('#duration-input').val());
-		this.model.set('interval', newInterval);
-		this.model.set('duration', newDuration);
-		this.model.sync('update', App.currentUser);
-		// this.updateInterval(newInterval);
-		// this.updateDuration(newDuration);
+		this.model.save({
+			'interval': parseInt($('#interval-input').val()),
+			'duration': parseInt($('#duration-input').val())
+		});
 		this.getVideos();
 		this.$el.hide();
 		App.timer.render();
-		App.timer.$el.show();
-	},
-
-	pickRandomInterest: function() {
-		var interests = this.model.get('keywords');
-		debugger;
-		return interests[Math.floor(Math.random() * interests.length)].term;
+		// App.timer.$el.show();
 	},
 
 	getVideos: function() {
 		var keyword = this.pickRandomInterest();
-		debugger;
 		$.ajax({
 			url: '/videos',
 			method: 'GET',
@@ -49,6 +39,11 @@ App.Views.Preferences = Backbone.View.extend({
 		.done(this.pickOneVideo.bind(this));
 	},
 
+	pickRandomInterest: function() {
+		var interests = this.model.get('keywords');
+		return interests[Math.floor(Math.random() * interests.length)].term;
+	},
+
 	pickOneVideo: function(data) {
 		var videos = data.map(function(video) {
 			return {
@@ -57,30 +52,13 @@ App.Views.Preferences = Backbone.View.extend({
 				html: video.embed.html
 			};
 		});
-		var currentBestVideo = {};
-		var currentBestDuration = 100000;
-		for (var i = 0; i < videos.length; i++) {
-			if (Math.abs(videos[i].duration - (this.model.get('duration') * 60)) < currentBestDuration) {
-				currentBestVideo = videos[i];
+		var currentBestVideo = {duration: 100000};
+
+		videos.forEach(function(video) {
+			if (Math.abs(video.duration - (this.model.get('duration') * 60)) < currentBestVideo.duration) {
+				currentBestVideo = video;
 			}
-		}
+		}.bind(this));
 		App.currentVideo = currentBestVideo;
-		// RENDER INTERVAL VIEW
 	}
-
-	// updateInterval: function(newInterval) {
-	// 	$.ajax({
-	// 		url: '/users/' + App.currentUser.get('id'),
-	// 		method: 'PUT',
-	// 		data: {interval: newInterval}
-	// 	});
-	// },
-
-	// updateDuration: function(newDuration) {
-	// 	$.ajax({
-	// 		url: '/users/' + App.currentUser.get('id'),
-	// 		method: 'PUT',
-	// 		data: {duration: newDuration}
-	// 	});
-	// }
 });
