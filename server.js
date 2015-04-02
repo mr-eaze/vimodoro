@@ -9,6 +9,7 @@ var application_root = __dirname,
 var app = express();
 require('dotenv').load();
 
+// Vimeo suggested syntax for instantiating module
 var lib = new Vimeo(process.env.VIMEO_CLIENT_ID, process.env.VIMEO_CLIENT_SECRET, process.env.VIMEO_TOKEN);
 
 var User = models.users;
@@ -74,7 +75,7 @@ app.post('/users', function(req, res) {
 app.put('/users/:id', function(req, res) {
 	User.findOne(req.params.id)
 		.then(function(user) {
-			User.update(req.body)
+			user.update(req.body)
 				.then(function(updatedUser) {
 					res.send(updatedUser);
 				});
@@ -84,7 +85,7 @@ app.put('/users/:id', function(req, res) {
 app.delete('/users/:id', function(req, res) {
 	User.findOne(req.params.id)
 		.then(function(user) {
-			User.destroy()
+			user.destroy()
 				.then(function() {
 					res.send(user);
 				});
