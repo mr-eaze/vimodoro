@@ -36,6 +36,7 @@ App.Views.KeywordView = Backbone.View.extend({
 	},
 
 	addSelectedClass: function() {
+		App.currentUser.fetch();
 		this.$el.addClass('selected');
 	},
 
@@ -53,6 +54,7 @@ App.Views.KeywordView = Backbone.View.extend({
 	},
 
 	removeSelectedClass: function() {
+		App.currentUser.fetch();
 		this.$el.removeClass('selected');
 	}
 
