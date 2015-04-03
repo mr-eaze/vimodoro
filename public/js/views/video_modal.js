@@ -14,23 +14,17 @@ App.Views.VideoModal = Backbone.View.extend({
 			$('iframe').attr('id', 'player1');
 			this.iframe = $('iframe')[0];
 	    this.player = $f(this.iframe);
-	    debugger;
     	this.player.addEvent('ready', function() {
-    		debugger;
-    		this.player.addEvent('finish', this.onFinish);
+    		this.player.addEvent('finish', this.goBacktoInterval.bind(this));
     	}.bind(this));
     }.bind(this));
 	},
 
-	onFinish: function(id) {
-    alert('finished');
-    status.text('finished');
-  },
-
 	// go back to interval view
-	goBacktoInterval: function() {
-		// this.$el.hide();
-		// App.timer.render();
+	goBacktoInterval: function(id) {
+		this.$el.hide();
+		App.preferences.getVideos();
+		App.timer.render();
 		console.log('done!');
 	},
 

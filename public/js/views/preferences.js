@@ -28,6 +28,7 @@ App.Views.Preferences = Backbone.View.extend({
 	},
 
 	getVideos: function() {
+		console.log('getting videos...');
 		var keyword = this.pickRandomInterest();
 		$.ajax({
 			url: '/videos',
@@ -46,6 +47,7 @@ App.Views.Preferences = Backbone.View.extend({
 	},
 
 	pickOneVideo: function(data) {
+		console.log('videos gotten');
 		var videos = data.map(function(video) {
 			return {
 				uri: video.uri,

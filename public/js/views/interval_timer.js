@@ -42,10 +42,8 @@ App.Views.IntervalTimer = Backbone.View.extend({
 	},
 
 	launchVideo: function() {
-		alert("video launched");
-		// ---------------------->
 		clearInterval(this.timer);
-		App.videoModal.$el.show();
+		App.modal = new App.Views.VideoModal();
 	},
 
 	goBack: function() {
