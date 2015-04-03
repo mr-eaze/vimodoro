@@ -2,7 +2,13 @@ var App = {
 	Models: {},
 	Collections: {},
 	Views: {},
-	Routers: {}
+	Routers: {},
+};
+
+App.saveCookie = function() {
+	App.keywords.each(function(keyword) {
+		$.cookie(keyword.get('term'), '1');
+	});
 };
 
 $(function() {
@@ -10,4 +16,8 @@ $(function() {
 	App.keywords = new App.Collections.Keywords();
 	App.users = new App.Collections.Users();
 	App.usersView = new App.Views.Users({collection: App.users});	
+});
+
+$(window).unload(function() {
+   $.cookie.del('cookie');
 });

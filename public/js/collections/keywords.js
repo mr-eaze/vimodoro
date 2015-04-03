@@ -3,6 +3,10 @@ App.Collections.Keywords = Backbone.Collection.extend({
 	comparator: 'term',
 	initialize: function() {
 		console.log('keyword collection created');
-		this.fetch();
+		this.fetch(
+			{success: function() {
+				App.saveCookie();
+			}
+		});
 	}
 });
