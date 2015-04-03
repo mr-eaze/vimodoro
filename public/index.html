@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title> vimodoro </title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
 	<script src="bundle.js"></script>
@@ -23,29 +24,35 @@
 </head>
 <body>
 
-	<h1>VIMODORO</h1>
+	<header>
+		<img src="/assets/vimodoro_logo_black.png" alt="vimodoro_black_logo">
+	</header>
+
+	<!-- <h1>VIMODORO</h1> -->
 
 
 <!-- VIEWS -->
 
-	<div id='login-view'></div>
-	<div id='create-user-view'></div>	
-	<div id="preferences-view"></div>
-	<div id="timer-view"></div>
-	<div id="video-modal-view"></div>
+	<div id='login-view'       class="view"></div>
+	<div id='create-user-view' class="view"></div>	
+	<div id="preferences-view" class="view"></div>
+	<div id="timer-view"       class="view"></div>
+	<div id="video-modal-view" class="view"></div>
 
 
 <!-- TEMPLATES -->
 
-	<template id='create-user-template'>
-		<hr><br>
-		<span>
-			<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
-		</span>
-		<span>
-			<button id='create-user'>Create User</button>
-		</span>	
-	</template>
+	<!-- <template id='create-user-template'> -->
+		<div class="container">
+			<hr><br>
+			<span>
+				<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
+			</span>
+			<span>
+				<button id='create-user'>Create User</button>
+			</span>	
+		</div>
+	<!-- </template> -->
 
 	<template id='user-preview-template'>
 		<div class='user'>
