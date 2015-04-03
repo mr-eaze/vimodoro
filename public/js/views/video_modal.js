@@ -15,20 +15,11 @@ App.Views.VideoModal = Backbone.View.extend({
 	// go back to interval view
 	goBacktoInterval: function() {
 		this.$el.hide();
-		App.timer.render();
 	},
 
 	// go back to preferences view
 	goBacktoPreferences: function() {
 		this.$el.hide();
-		App.preferences.render();
 	}
 
 });
-
-
-// template datathatgoesintothetemplate
-
-// template({key: value, key: value})
-
-// App.currentUser.toJSON()

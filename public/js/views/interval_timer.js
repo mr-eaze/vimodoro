@@ -10,6 +10,7 @@ App.Views.IntervalTimer = Backbone.View.extend({
 		console.log('Interval Timer View launched');
 		this.model    = App.currentUser;
 		this.template = Handlebars.compile($('#interval-timer-template').html());
+		this.render();
 	},
 
 	render: function() {

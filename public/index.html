@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title> vimodoro </title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animate.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https:////f.vimeocdn.com/js/froogaloop2.min.js"></script>
 	<script src="bundle.js"></script>
@@ -18,12 +19,11 @@
 	<script src="js/views/users_collection_view.js"></script>
 	<script src="js/views/interval_timer.js"></script>
 	<script src="js/views/video_modal.js"></script>
+	<script src="js/views/landing_page.js"></script>
 </head>
 <body>
 
-	<h1>VIMODORO</h1>
-
-	<div id='login-view'>
+<!-- 	<div id='login-view'>
 		<hr>
 		<div>
 			<span>
@@ -34,25 +34,35 @@
 			</span>	
 		<br><br>
 		</div>
-	</div>	
+	</div>	 -->
 
 <!-- VIEWS -->
 
-	<div id="preferences-view"></div>
+	<div id="landing-page-view"></div>
+<!-- 	<div id="preferences-view"></div>
 	<div id="timer-view"></div>
-	<div id="video-modal-view"></div>
+	<div id="video-modal-view"></div> -->
 
 
 <!-- TEMPLATES -->
 
-	<template id='user-preview-template'>
-		<div class='user'>
-			<p id='user-name'>
-				{{name}}
-			</p>	
+	 <!-- landing page -->
+	<template id="landing-page-template">
+		<div id="landing-page-container">
+			<div id="logo-container">
+				<img src="assets/vimodoro_logo_white.png" alt="vimodoro">
+			</div>
 		</div>
 	</template>
 
+	 <!-- user preview -->
+	<template id='user-preview-template'>
+		<div class='user'>
+			<p id='user-name'> {{name}} </p>	
+		</div>
+	</template>
+
+	 <!-- preferences -->
 	<template id="preferences-template">
 		<div id="interval-set">
 			<span>I want to work for</span>
@@ -70,27 +80,25 @@
 		</div>
 		<button id="start-interval">Go!</button>
 	</template>
-
+	 
+	 <!-- keyword -->
 	<template id="keyword-template">
-		<div id="keyword">{{term}}</div>
+		<div id="keyword"> {{term}} </div>
 	</template>
 
-	 <!-- interval-timer template -->
+	 <!-- interval timer -->
  	<template id="interval-timer-template">
 		<div id="interval-timer">
 			<span id="timer-minutes"> {{interval}} </span>
 			<span id="timer-seconds">      00 		 </span>
 		</div>
-	 <!-- back button: go back to user preferences page -->
 		<button id="go-back-button"></button>
 	</template>		
 
 	 <!-- video modal -->
 	<template id="video-modal-template">
 		<div id="modal-background">
-			<div id="video-container">
-				{{{html}}}
-			</div>
+			<div id="video-container"> {{{html}}} </div>
 		</div>
 	</template>
 
