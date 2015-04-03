@@ -3,6 +3,7 @@ App.Views.Preferences = Backbone.View.extend({
 	initialize: function() {
 		console.log('new preferences view created');
 		this.template = Handlebars.compile($('#preferences-template').html());
+		this.render();
 	},
 
 	render: function() {
@@ -24,6 +25,7 @@ App.Views.Preferences = Backbone.View.extend({
 		});
 		this.getVideos();
 		this.$el.hide();
+		App.timer = new App.Views.IntervalTimer();
 		App.timer.render();
 		// App.timer.$el.show();
 	},
