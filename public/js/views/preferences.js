@@ -68,11 +68,14 @@ App.Views.Preferences = Backbone.View.extend({
 				html: video.embed.html
 			};
 		});
-		var currentBestVideo = {duration: 60};
+		var currentBestVideo = {};
+		var currentBestDurationDifference = 60;
 
 		videos.forEach(function(video) {
-			if (Math.abs(video.duration - (App.currentUser.get('duration') * 60)) < currentBestVideo.duration) {
+			var durationDifference = Math.abs(video.duration - (App.currentUser.get('duration') * 60));
+			if (durationDifference < currentBestDurationDifference) {
 				currentBestVideo = video;
+				currentBestDurationDifference = durationDifference;
 			}
 		}.bind(this));
 		if (!currentBestVideo.html) {
