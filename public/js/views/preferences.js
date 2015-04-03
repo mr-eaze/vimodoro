@@ -18,7 +18,7 @@ App.Views.Preferences = Backbone.View.extend({
 	},
 
 	startInterval: function() {
-		this.model.save({
+		App.currentUser.save({
 			'interval': parseInt($('#interval-input').val()),
 			'duration': parseInt($('#duration-input').val())
 		});
@@ -29,7 +29,7 @@ App.Views.Preferences = Backbone.View.extend({
 	},
 
 	pickRandomInterest: function() {
-		var interests = this.model.get('keywords');
+		var interests = App.currentUser.get('keywords');
 		return interests[Math.floor(Math.random() * interests.length)].term;
 	},
 
