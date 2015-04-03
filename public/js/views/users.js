@@ -18,19 +18,13 @@ App.Views.Users = Backbone.View.extend({
 
 	events: {
 		'click #create-user': 'createUser',
-		'click #user-name': 'setUser'
+		'click .user-name': 'setUser'
 	},
 
 	createUser: function() {
 		var newUser = $('#name').val();
 		var newUserModel = new App.Models.User({name:newUser});
 		App.currentUser = this.collection.create(newUserModel);
-		this.$el.hide();
-	},
-
-	setUser: function() {
-		var user = $('#user-name').text();
-		App.currentUser = this.collection.findWhere({ name: user });
 		this.$el.hide();
 	}
 });
