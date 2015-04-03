@@ -35,6 +35,7 @@ app.get('/videos', function(req, res) {
 		query: {
 			page: 1,
 			per_page: 50,
+			page: req.query.page,
 			query: req.query.search_term,
 			sort: 'date',
 			direction: 'desc'

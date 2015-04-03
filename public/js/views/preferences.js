@@ -3,13 +3,14 @@ App.Views.Preferences = Backbone.View.extend({
 	initialize: function() {
 		console.log('new preferences view created');
 		this.template = Handlebars.compile($('#preferences-template').html());
-		this.render();
 	},
 
 	render: function() {
-		var html = this.template(this.model.toJSON());
+		var html = this.template(App.currentUser.toJSON());
 		$('#preferences-view').html('');
 		$('#preferences-view').append(html);
+		App.keywordsView = new App.Views.KeywordsView({collection: App.keywords});
+		this.$el.show();
 	},
 
 	events: {
@@ -17,7 +18,7 @@ App.Views.Preferences = Backbone.View.extend({
 	},
 
 	startInterval: function() {
-		this.model.save({
+		App.currentUser.save({
 			'interval': parseInt($('#interval-input').val()),
 			'duration': parseInt($('#duration-input').val())
 		});
@@ -27,25 +28,33 @@ App.Views.Preferences = Backbone.View.extend({
 		// App.timer.$el.show();
 	},
 
+	pickRandomInterest: function() {
+		var interests = App.currentUser.get('keywords');
+		return interests[Math.floor(Math.random() * interests.length)].term;
+	},
+
 	getVideos: function() {
+		console.log('getting videos...');
+		// debugger;
 		var keyword = this.pickRandomInterest();
 		$.ajax({
 			url: '/videos',
 			method: 'GET',
 			data: {
 				search_term: keyword,
-				api: 1
+				api: 1,
+				page: parseInt($.cookie(keyword))
 			}
 		})
-		.done(this.pickOneVideo.bind(this));
+		// .done(this.pickOneVideo.bind(this));
+		.done(function(data, status, jqXHR) {
+			// debugger;
+			this.pickOneVideo(data, keyword);
+		}.bind(this));
 	},
 
-	pickRandomInterest: function() {
-		var interests = this.model.get('keywords');
-		return interests[Math.floor(Math.random() * interests.length)].term;
-	},
-
-	pickOneVideo: function(data) {
+	pickOneVideo: function(data, keyword) {
+		console.log('videos gotten');
 		var videos = data.map(function(video) {
 			return {
 				uri: video.uri,
@@ -53,26 +62,38 @@ App.Views.Preferences = Backbone.View.extend({
 				html: video.embed.html
 			};
 		});
-		var currentBestVideo = {duration: 100000};
+		var currentBestVideo = {};
+		var currentBestDurationDifference = 60;
 
 		videos.forEach(function(video) {
-			if (Math.abs(video.duration - (this.model.get('duration') * 60)) < currentBestVideo.duration) {
+			var durationDifference = Math.abs(video.duration - (App.currentUser.get('duration') * 60));
+			if (durationDifference < currentBestDurationDifference) {
 				currentBestVideo = video;
+				currentBestDurationDifference = durationDifference;
 			}
 		}.bind(this));
-		App.currentVideo = currentBestVideo;
-		this.parseVideoHtml();
+		if (!currentBestVideo.html) {
+			$.cookie(keyword, parseInt($.cookie(keyword))+1);
+			this.getVideos();
+		} else {
+			$.cookie(keyword, parseInt($.cookie(keyword))+1);
+			App.currentVideo = currentBestVideo;
+			this.parseVideoHtml();
+		}
 	},
 
 	parseVideoHtml: function() {
-		App.currentVideo.html;
+		// App.currentVideo.html;
 		$.ajax({
 			url: 'https://vimeo.com/api/oembed.json',
 			method: 'GET',
 			data: {
 				url: App.currentVideo.html.split('"')[1],
 				autoplay: 1,
-				api: 1
+				api: 1,
+				maxwidth: 640,
+				maxheight: 360,
+				player_id: 'player1'
 			}
 		})
 		.done(function(data) {

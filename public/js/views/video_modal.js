@@ -10,11 +10,20 @@ App.Views.VideoModal = Backbone.View.extend({
 	renderView: function() {
 		this.$el.html(this.template(App.currentVideo));
 		this.$el.show();
+    $('iframe').ready(function() {
+			$('iframe').attr('id', 'player1');
+			this.iframe = $('iframe')[0];
+	    this.player = $f(this.iframe);
+    	this.player.addEvent('ready', function() {
+    		this.player.addEvent('finish', this.goBacktoInterval.bind(this));
+    	}.bind(this));
+    }.bind(this));
 	},
 
 	// go back to interval view
-	goBacktoInterval: function() {
+	goBacktoInterval: function(id) {
 		this.$el.hide();
+		App.preferences.getVideos();
 		App.timer.render();
 	},
 
@@ -25,10 +34,3 @@ App.Views.VideoModal = Backbone.View.extend({
 	}
 
 });
-
-
-// template datathatgoesintothetemplate
-
-// template({key: value, key: value})
-
-// App.currentUser.toJSON()
