@@ -79,10 +79,8 @@ App.Views.Preferences = Backbone.View.extend({
 			}
 		}.bind(this));
 		if (!currentBestVideo.html) {
-			debugger;
 			this.getVideos(pageNumber + 1);
 		} else {
-			debugger;
 			App.currentVideo = currentBestVideo;
 			this.parseVideoHtml();
 		}
@@ -97,6 +95,8 @@ App.Views.Preferences = Backbone.View.extend({
 				url: App.currentVideo.html.split('"')[1],
 				autoplay: 1,
 				api: 1,
+				maxwidth: 640,
+				maxheight: 360,
 				player_id: 'player1'
 			}
 		})
