@@ -15,7 +15,8 @@
 	<script src="js/views/preferences.js"></script>
 	<script src="js/views/keyword.js"></script>
 	<script src="js/views/keywords.js"></script>
-	<script src="js/views/users_collection_view.js"></script>
+	<script src="js/views/users.js"></script>
+	<script src="js/views/user.js"></script>
 	<script src="js/views/interval_timer.js"></script>
 	<script src="js/views/video_modal.js"></script>
 </head>
@@ -24,7 +25,6 @@
 	<h1>VIMODORO</h1>
 
 	<div id='login-view'>
-		<hr>
 		<div>
 			<span>
 				<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
@@ -47,9 +47,7 @@
 
 	<template id='user-preview-template'>
 		<div class='user'>
-			<p id='user-name'>
-				{{name}}
-			</p>	
+			<p id='user-name'>{{name}}</p>	
 		</div>
 	</template>
 
@@ -96,22 +94,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
