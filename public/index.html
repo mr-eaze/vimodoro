@@ -33,30 +33,30 @@
 
 <!-- VIEWS -->
 
-	<div id='login-view'       class="view"></div>
-	<div id='create-user-view' class="view"></div>	
-	<div id="preferences-view" class="view"></div>
-	<div id="timer-view"       class="view"></div>
-	<div id="video-modal-view" class="view"></div>
+	<div id='login-view'></div>
+	<div id='create-user-view'></div>	
+	<div id="preferences-view"></div>
+	<div id="timer-view"></div>
+	<div id="video-modal-view"></div>
 
 
 <!-- TEMPLATES -->
 
-	<!-- <template id='create-user-template'> -->
-		<div class="container">
-			<hr><br>
+
+	<template id='user-preview-template'>
+		<div>
+			<p id='user-name' class='user'>{{name}}</p>	
+		</div>
+	</template>
+
+	<template id='create-user-template'>
+		<div class="container login">
 			<span>
 				<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
 			</span>
 			<span>
 				<button id='create-user'>Create User</button>
 			</span>	
-		</div>
-	<!-- </template> -->
-
-	<template id='user-preview-template'>
-		<div class='user'>
-			<p id='user-name'>{{name}}</p>	
 		</div>
 	</template>
 
