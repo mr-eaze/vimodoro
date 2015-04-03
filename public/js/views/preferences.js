@@ -22,7 +22,7 @@ App.Views.Preferences = Backbone.View.extend({
 			'interval': parseInt($('#interval-input').val()),
 			'duration': parseInt($('#duration-input').val())
 		});
-		this.getVideos(1);
+		this.getVideos();
 		this.$el.hide();
 		App.timer.render();
 		// App.timer.$el.show();
@@ -43,22 +43,17 @@ App.Views.Preferences = Backbone.View.extend({
 			data: {
 				search_term: keyword,
 				api: 1,
-				page: pageNumber
+				page: parseInt($.cookie(keyword))
 			}
 		})
 		// .done(this.pickOneVideo.bind(this));
 		.done(function(data, status, jqXHR) {
 			// debugger;
-			this.passThroughPageNumber(data, pageNumber);
+			this.pickOneVideo(data, keyword);
 		}.bind(this));
 	},
 
-	passThroughPageNumber: function(data, pageNumber) {
-		// debugger;
-		this.pickOneVideo(data, pageNumber);
-	},
-
-	pickOneVideo: function(data, pageNumber) {
+	pickOneVideo: function(data, keyword) {
 		// debugger;
 		console.log('videos gotten');
 		var videos = data.map(function(video) {
@@ -79,8 +74,11 @@ App.Views.Preferences = Backbone.View.extend({
 			}
 		}.bind(this));
 		if (!currentBestVideo.html) {
-			this.getVideos(pageNumber + 1);
+			$.cookie(keyword, parseInt($.cookie(keyword))+1);
+			this.getVideos();
 		} else {
+			$.cookie(keyword, parseInt($.cookie(keyword))+1);
+			debugger;
 			App.currentVideo = currentBestVideo;
 			this.parseVideoHtml();
 		}
