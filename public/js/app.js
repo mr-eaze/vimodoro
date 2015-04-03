@@ -17,7 +17,3 @@ $(function() {
 	App.users = new App.Collections.Users();
 	App.usersView = new App.Views.Users({collection: App.users});	
 });
-
-$(window).unload(function() {
-   $.cookie.del('cookie');
-});

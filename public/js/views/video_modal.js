@@ -25,7 +25,6 @@ App.Views.VideoModal = Backbone.View.extend({
 		this.$el.hide();
 		App.preferences.getVideos();
 		App.timer.render();
-		console.log('done!');
 	},
 
 	// go back to preferences view
@@ -35,10 +34,3 @@ App.Views.VideoModal = Backbone.View.extend({
 	}
 
 });
-
-
-// template datathatgoesintothetemplate
-
-// template({key: value, key: value})
-
-// App.currentUser.toJSON()
