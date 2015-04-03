@@ -9,6 +9,7 @@ App.Views.Preferences = Backbone.View.extend({
 		var html = this.template(App.currentUser.toJSON());
 		$('#preferences-view').html('');
 		$('#preferences-view').append(html);
+		App.keywordsView = new App.Views.KeywordsView({collection: App.keywords});
 		this.$el.show();
 	},
 
@@ -21,24 +22,10 @@ App.Views.Preferences = Backbone.View.extend({
 			'interval': parseInt($('#interval-input').val()),
 			'duration': parseInt($('#duration-input').val())
 		});
-		this.getVideos();
+		this.getVideos(1);
 		this.$el.hide();
 		App.timer.render();
 		// App.timer.$el.show();
-	},
-
-	getVideos: function() {
-		console.log('getting videos...');
-		var keyword = this.pickRandomInterest();
-		$.ajax({
-			url: '/videos',
-			method: 'GET',
-			data: {
-				search_term: keyword,
-				api: 1
-			}
-		})
-		.done(this.pickOneVideo.bind(this));
 	},
 
 	pickRandomInterest: function() {
@@ -46,7 +33,33 @@ App.Views.Preferences = Backbone.View.extend({
 		return interests[Math.floor(Math.random() * interests.length)].term;
 	},
 
-	pickOneVideo: function(data) {
+	getVideos: function(pageNumber) {
+		console.log('getting videos...');
+		// debugger;
+		var keyword = this.pickRandomInterest();
+		$.ajax({
+			url: '/videos',
+			method: 'GET',
+			data: {
+				search_term: keyword,
+				api: 1,
+				page: pageNumber
+			}
+		})
+		// .done(this.pickOneVideo.bind(this));
+		.done(function(data, status, jqXHR) {
+			// debugger;
+			this.passThroughPageNumber(data, pageNumber);
+		}.bind(this));
+	},
+
+	passThroughPageNumber: function(data, pageNumber) {
+		// debugger;
+		this.pickOneVideo(data, pageNumber);
+	},
+
+	pickOneVideo: function(data, pageNumber) {
+		// debugger;
 		console.log('videos gotten');
 		var videos = data.map(function(video) {
 			return {
@@ -55,15 +68,21 @@ App.Views.Preferences = Backbone.View.extend({
 				html: video.embed.html
 			};
 		});
-		var currentBestVideo = {duration: 100000};
+		var currentBestVideo = {duration: 60};
 
 		videos.forEach(function(video) {
-			if (Math.abs(video.duration - (this.model.get('duration') * 60)) < currentBestVideo.duration) {
+			if (Math.abs(video.duration - (App.currentUser.get('duration') * 60)) < currentBestVideo.duration) {
 				currentBestVideo = video;
 			}
 		}.bind(this));
-		App.currentVideo = currentBestVideo;
-		this.parseVideoHtml();
+		if (!currentBestVideo.html) {
+			debugger;
+			this.getVideos(pageNumber + 1);
+		} else {
+			debugger;
+			App.currentVideo = currentBestVideo;
+			this.parseVideoHtml();
+		}
 	},
 
 	parseVideoHtml: function() {
