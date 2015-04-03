@@ -25,26 +25,27 @@
 
 	<h1>VIMODORO</h1>
 
-	<div id='login-view'>
-		<div>
-			<span>
-				<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
-			</span>
-			<span>
-				<button id='create-user'>Create User</button>
-			</span>	
-		<br><br>
-		</div>
-	</div>	
 
 <!-- VIEWS -->
 
+	<div id='login-view'></div>
+	<div id='create-user-view'></div>	
 	<div id="preferences-view"></div>
 	<div id="timer-view"></div>
 	<div id="video-modal-view"></div>
 
 
 <!-- TEMPLATES -->
+
+	<template id='create-user-template'>
+		<hr><br>
+		<span>
+			<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
+		</span>
+		<span>
+			<button id='create-user'>Create User</button>
+		</span>	
+	</template>
 
 	<template id='user-preview-template'>
 		<div class='user'>
