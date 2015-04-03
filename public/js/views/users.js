@@ -4,7 +4,6 @@ App.Views.Users = Backbone.View.extend({
 
 	initialize: function() {
 		console.log('New User Preview Created');
-		userTemplate = Handlebars.compile($('#user-preview-template').html());
 		this.listenTo(this.collection, 'sync', this.renderAll);
 	},
 
@@ -18,7 +17,7 @@ App.Views.Users = Backbone.View.extend({
 
 	events: {
 		'click #create-user': 'createUser',
-		'click #user-name': 'setUser'
+		'click .user': 'hideUsers'
 	},
 
 	createUser: function() {
@@ -28,9 +27,7 @@ App.Views.Users = Backbone.View.extend({
 		this.$el.hide();
 	},
 
-	setUser: function() {
-		var user = $('#user-name').text();
-		App.currentUser = this.collection.findWhere({ name: user });
-		this.$el.hide();
+	hideUsers: function() {
+		this.$el.hide()
 	}
 });

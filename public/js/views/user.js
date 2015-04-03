@@ -1,8 +1,8 @@
 App.Views.User = Backbone.View.extend({
 
-	// events: {
-	// 	'click #new-user': 'setUser'
-	// },
+	events: {
+		'click': 'setUser'
+	},
 	
 	initialize: function() {
 		this.template = Handlebars.compile($('#user-preview-template').html());
@@ -13,9 +13,7 @@ App.Views.User = Backbone.View.extend({
 		this.$el.html( this.template (this.model.toJSON() ) );
 	},
 
-	// setUser: function() {
-	// 	var user = $('#user-name').text();
-	// 	App.currentUser = this.collection.where({ name: user });
-	// 	this.$el.hide();
-	// }
+	setUser: function() {
+		App.currentUser = this.model;
+	}
 });
