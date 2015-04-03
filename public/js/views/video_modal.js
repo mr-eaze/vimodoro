@@ -23,7 +23,7 @@ App.Views.VideoModal = Backbone.View.extend({
 	// go back to interval view
 	goBacktoInterval: function(id) {
 		this.$el.hide();
-		App.preferences.getVideos();
+		App.preferences.getVideos(1);
 		App.timer.render();
 		console.log('done!');
 	},
