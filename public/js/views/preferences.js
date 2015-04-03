@@ -3,13 +3,13 @@ App.Views.Preferences = Backbone.View.extend({
 	initialize: function() {
 		console.log('new preferences view created');
 		this.template = Handlebars.compile($('#preferences-template').html());
-		this.render();
 	},
 
 	render: function() {
-		var html = this.template(this.model.toJSON());
+		var html = this.template(App.currentUser.toJSON());
 		$('#preferences-view').html('');
 		$('#preferences-view').append(html);
+		this.$el.show();
 	},
 
 	events: {
@@ -28,6 +28,7 @@ App.Views.Preferences = Backbone.View.extend({
 	},
 
 	getVideos: function() {
+		console.log('getting videos...');
 		var keyword = this.pickRandomInterest();
 		$.ajax({
 			url: '/videos',
@@ -46,6 +47,7 @@ App.Views.Preferences = Backbone.View.extend({
 	},
 
 	pickOneVideo: function(data) {
+		console.log('videos gotten');
 		var videos = data.map(function(video) {
 			return {
 				uri: video.uri,
@@ -72,7 +74,8 @@ App.Views.Preferences = Backbone.View.extend({
 			data: {
 				url: App.currentVideo.html.split('"')[1],
 				autoplay: 1,
-				api: 1
+				api: 1,
+				player_id: 'player1'
 			}
 		})
 		.done(function(data) {

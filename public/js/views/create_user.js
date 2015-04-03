@@ -23,5 +23,6 @@ App.Views.createUser = Backbone.View.extend({
 		App.currentUser = App.users.findWhere({name:newUser});
 		this.$el.hide();
 		App.usersView.$el.hide();
+		App.preferences.render();
 	}
 });
