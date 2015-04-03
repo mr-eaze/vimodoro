@@ -18,7 +18,7 @@ App.Views.UserPreview = Backbone.View.extend({
 
 	events: {
 		'click #create-user': 'createUser',
-		'click #user-name': 'setUser'
+		'click .user-name': 'setUser'
 	},
 
 	createUser: function() {
@@ -28,9 +28,10 @@ App.Views.UserPreview = Backbone.View.extend({
 		this.$el.hide();
 	},
 
-	setUser: function() {
-		var user = $('#user-name').text().trim();
-		App.currentUser = this.collection.where({ name: user });
+	setUser: function(model) {
+		debugger;
+		var user = this.$el.text();
+		App.currentUser = this.collection.findWhere({ name: user });
 		this.$el.hide();
 	}
 });

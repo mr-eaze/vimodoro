@@ -72,7 +72,8 @@ App.Views.Preferences = Backbone.View.extend({
 			data: {
 				url: App.currentVideo.html.split('"')[1],
 				autoplay: 1,
-				api: 1
+				api: 1,
+				player_id: 'player1'
 			}
 		})
 		.done(function(data) {
