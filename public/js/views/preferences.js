@@ -33,7 +33,7 @@ App.Views.Preferences = Backbone.View.extend({
 		return interests[Math.floor(Math.random() * interests.length)].term;
 	},
 
-	getVideos: function(pageNumber) {
+	getVideos: function() {
 		console.log('getting videos...');
 		// debugger;
 		var keyword = this.pickRandomInterest();
@@ -54,7 +54,6 @@ App.Views.Preferences = Backbone.View.extend({
 	},
 
 	pickOneVideo: function(data, keyword) {
-		// debugger;
 		console.log('videos gotten');
 		var videos = data.map(function(video) {
 			return {
@@ -78,14 +77,13 @@ App.Views.Preferences = Backbone.View.extend({
 			this.getVideos();
 		} else {
 			$.cookie(keyword, parseInt($.cookie(keyword))+1);
-			debugger;
 			App.currentVideo = currentBestVideo;
 			this.parseVideoHtml();
 		}
 	},
 
 	parseVideoHtml: function() {
-		App.currentVideo.html;
+		// App.currentVideo.html;
 		$.ajax({
 			url: 'https://vimeo.com/api/oembed.json',
 			method: 'GET',

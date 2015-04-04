@@ -1,8 +1,4 @@
 App.Views.User = Backbone.View.extend({
-
-	events: {
-		'click': 'setUser'
-	},
 	
 	initialize: function() {
 		this.template = Handlebars.compile($('#user-preview-template').html());
@@ -13,9 +9,20 @@ App.Views.User = Backbone.View.extend({
 		this.$el.html( this.template (this.model.toJSON() ) );
 	},
 
+	events: {
+		'click #user-name': 'setUser',
+		'click #delete-user': 'deleteUser'
+	},
+
 	setUser: function() {
 		App.currentUser = this.model;
 		App.usersView.$el.hide();
 		App.preferences.render();
+	},
+
+	deleteUser: function() {
+		console.log('deleting user');
+		this.model.destroy();
+		this.remove();
 	}
 });

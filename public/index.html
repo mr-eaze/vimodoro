@@ -42,21 +42,22 @@
 
 <!-- TEMPLATES -->
 
-
-	<template id='user-preview-template'>
-		<div>
-			<p id='user-name' class='user'>{{name}}</p>	
-		</div>
+	<template id='create-user-template'>
+		<hr><br>
+		<span>
+			<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
+		</span>
+		<span>
+			<button id='create-user'>Create User</button>
+		</span>	
+		<br><br>
 	</template>
 
-	<template id='create-user-template'>
-		<div class="container login">
-			<span>
-				<input type="text" name='new-name' id='name' placeholder='Enter a new username' autocomplete='off'>
-			</span>
-			<span>
-				<button id='create-user'>Create User</button>
-			</span>	
+	<template id='user-preview-template'>
+		<div class='user'>
+			<span id='user-name'>{{name}}</span>
+			<span id='delete-user'>x</span>
+
 		</div>
 	</template>
 
@@ -85,8 +86,8 @@
 	 <!-- interval-timer template -->
  	<template id="interval-timer-template">
 		<div id="interval-timer">
-			<span id="timer-minutes"> {{interval}} </span>
-			<span id="timer-seconds">      00 		 </span>
+			<span id="timer-minutes"  > {{interval}} </span>
+			<span id="timer-seconds"  >      00 		 </span>
 		</div>
 	 <!-- back button: go back to user preferences page -->
 		<button id="go-back-button"></button>
