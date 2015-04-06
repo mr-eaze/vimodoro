@@ -1,9 +1,3 @@
-$(function() {
-	console.log('App working');
-	App.router = new App.Routers.Router();
-	Backbone.history.start();
-});
-
 var App = {
 	Models: {},
 	Collections: {},
@@ -16,3 +10,9 @@ App.saveCookie = function() {
 		$.cookie(keyword.get('term'), '1');
 	});
 };
+
+$(function() {
+	console.log('App working');
+	App.router = new App.Routers.Router();
+	Backbone.history.start();
+});

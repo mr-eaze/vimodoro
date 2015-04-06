@@ -15,7 +15,6 @@ App.Views.KeywordView = Backbone.View.extend({
 	render: function() {
 		html = this.template(this.model.toJSON());
 		this.$el.html(html);
-		App.router.navigate('preferences');
 	},
 
 	toggleSelect: function() {

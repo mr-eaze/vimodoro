@@ -1,7 +1,7 @@
 App.Routers.Router = Backbone.Router.extend ({
 
 	routes: {
-    ''              : 'login',
+    ''              : 'users',
     'pref/:user_id' : 'preferences',
     'play/:user_id' : 'play'
   },
@@ -13,25 +13,33 @@ App.Routers.Router = Backbone.Router.extend ({
   	App.keywords  = new App.Collections.Keywords();
 	  App.users     = new App.Collections.Users();
 	  App.usersView = new App.Views.Users({collection: App.users});
+    App.timer     = new App.Views.IntervalTimer();
   },
 
-  index: function() {
-  	console.log('index');
+  users: function() {
+  	console.log('users');
+    App.Views.User.initialize();
   },
 
   preferences: function (user_id) {
   	
-  	console.log('preferences');
+  	console.log(user_id);
 
-  	var user_id = App.currentUser.get('id');
-  	var name    = App.currentUser.get('name');
 
-  	console.log( name + 'preferences');
+  	// var user_id = App.currentUser.get('id');
+  	// var name    = App.currentUser.get('name');
+
+  	// console.log( name + 'preferences');
 
   },
 
-  play: function() {
+  play: function(user_id) {
   	console.log('play');
+    App.timer.render(App.currentUser);
+    App.preferences.startInterval();
+    App.preferences.render();
+    $('#users-view , #create-user-view').hide();
+    
   }
 
 });

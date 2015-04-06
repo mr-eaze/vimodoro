@@ -1,6 +1,6 @@
 App.Views.Users = Backbone.View.extend({
 	
-	el: '#login-view',
+	el: '#users-view',
 
 	initialize: function() {
 		console.log('New User Preview Created');

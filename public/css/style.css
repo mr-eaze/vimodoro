@@ -57,12 +57,12 @@ header {
 
 
 /* 
-	----------------
- 	* user / login *
- 	----------------
+	-------------------------
+ 	* user / users / create *
+ 	-------------------------
 */ 
 
-#login-view {
+#users-view {
 	overflow                   : scroll;
 	width                      : 500px;
 	height                     : 700px;
