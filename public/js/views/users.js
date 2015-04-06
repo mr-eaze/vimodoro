@@ -21,7 +21,7 @@ App.Views.Users = Backbone.View.extend({
 	},
 
 	hideUsers: function() {
-		this.$el.hide()
+		this.$el.hide();
 		App.createUserView.$el.hide();
 	}
 });
