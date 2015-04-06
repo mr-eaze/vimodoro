@@ -6,12 +6,12 @@ App.Views.User = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html( this.template (this.model.toJSON() ) );
+		this.$el.html(this.template(this.model.toJSON()));
 	},
 
 	events: {
-		'click #user-name': 'setUser',
-		'click #delete-user': 'deleteUser'
+		'click .user': 'setUser',
+		'click .delete-user': 'deleteUser'
 	},
 
 	setUser: function() {

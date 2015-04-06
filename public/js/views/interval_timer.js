@@ -22,8 +22,8 @@ App.Views.IntervalTimer = Backbone.View.extend({
 	startTimer: function() {
 		this.timer = setInterval( function() { 	
 
-			var minutes = parseInt( $('#timer-minutes').html() );
-			var seconds = parseInt( $('#timer-seconds').html() );
+			var minutes = parseInt($('#timer-minutes').html());
+			var seconds = parseInt($('#timer-seconds').html());
 		
 			if (seconds === 0) {
 				if (minutes === 0) {
