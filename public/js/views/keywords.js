@@ -6,6 +6,13 @@ App.Views.KeywordsView = Backbone.View.extend({
 	},
 	renderAll: function() {
 		this.collection.each(this.renderOne, this);
+		if (!$('.selected').length) {
+			$('#start-interval-button').addClass('disabled')
+																 .prop('disabled', true);
+		} else {
+			$('#start-interval-button').addClass('enabled')
+																 .prop('disabled', false);
+		}
 	},
 	renderOne: function(model) {
 		var keyword = new App.Views.KeywordView({model: model});
@@ -19,7 +26,6 @@ App.Views.KeywordsView = Backbone.View.extend({
 		// if the name of the current user is in the list of keywordusers, preselect it
 		if (keywordUserNames.indexOf(name) !== -1) {
 			keyword.$el.addClass('selected');
-			$('#start-interval-button').prop('disabled',false);
 		}
 		this.$el.append(keyword.el);
 	}
