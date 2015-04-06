@@ -1,4 +1,11 @@
 App.Views.KeywordView = Backbone.View.extend({
+	
+	className: 'keyword',
+
+	events: {
+		'click': 'toggleSelect'
+	},
+	
 	initialize: function() {
 		console.log('new keyword view created');
 		this.template = Handlebars.compile($('#keyword-template').html());
@@ -8,10 +15,6 @@ App.Views.KeywordView = Backbone.View.extend({
 	render: function() {
 		html = this.template(this.model.toJSON());
 		this.$el.html(html);
-	},
-
-	events: {
-		'click': 'toggleSelect'
 	},
 
 	toggleSelect: function() {

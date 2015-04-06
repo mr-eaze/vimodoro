@@ -13,12 +13,11 @@ App.Views.createUser = Backbone.View.extend({
 	},
 
 	events: {
-		'click #create-user': 'createUser',
-		'keydown #name': 'enterButton'
+		'click #create-user-button': 'createUser',
 	},
 
 	createUser: function() {
-		var newUser = $('#name').val();
+		var newUser = $('#name-input').val();
 		var newUserModel = new App.Models.User({name:newUser});
 		App.users.create(newUserModel);
 		App.currentUser = App.users.findWhere({name:newUser});
