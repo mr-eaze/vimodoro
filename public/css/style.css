@@ -1,6 +1,7 @@
 * {
   box-sizing  : border-box;
   font-family : lato;
+  cursor: default;
 }
 
 .hidden {
@@ -382,18 +383,66 @@ header {
 }
 
 
+/* 
+	---------------
+ 	* timer *
+ 	---------------
+*/ 
 
+#timer-view {
+	width 					: 500px;
+	margin 					: 0 auto;
+	text-align 			: center;
+}
 
+#timer-view span {
+	font-size: 190px;
+}
 
+#go-back-button {
+	display                    : inline-block;
+	width                    	 : 60%;
+	height                     : 60%; 				
+	padding                  	 : 10px;
+	margin-top  							 : 40px;
+	font-size                	 : 1em;
+	font-weight              	 : 200;
+	text-align                 : center; 
+	border-radius              : 5px; 
+	border-bottom            	 : 2px solid lightgrey;
+	border-right				 : 2px solid lightgrey;
+	border-left					 : 2px solid lightgrey;
+	border-top					 : 2px solid lightgrey;
+	background-color         	 : whitesmoke;
+	color                    	 : darkgrey;
+}
 
+#go-back-button:hover {
+	background-color : white;
+	color            : mediumaquamarine;
+	font-weight   	 : 300;
+	border-top       : 2px solid lightgrey;
+	border-left      : 2px solid lightgrey;
+	border-right     : 2px solid lightgrey;
+	border-bottom    : 2px solid lightgrey;
+}
 
+#go-back-button:active {
+	background-color : mediumaquamarine;
+	color            : white;
+	font-weight   	 : 300;
+}
 
+/* 
+	---------------
+ 	* video view *
+ 	---------------
+*/ 
 
-
-
-
-
-
+#video-modal-view {
+	width: 700px;
+	margin: 0 auto;
+}
 
 
 
