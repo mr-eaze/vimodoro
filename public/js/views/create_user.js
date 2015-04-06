@@ -13,7 +13,8 @@ App.Views.createUser = Backbone.View.extend({
 	},
 
 	events: {
-		'click #create-user-button': 'createUser',
+		'keypress': 'enterButton',
+		'click #create-user-button': 'createUser'
 	},
 
 	createUser: function() {
@@ -24,5 +25,11 @@ App.Views.createUser = Backbone.View.extend({
 		this.$el.hide();
 		App.usersView.$el.hide();
 		App.preferences.render();
+	},
+
+	enterButton: function(e) {
+		if (e.keyCode === 13) {
+			this.createUser();
+		}
 	}
 });

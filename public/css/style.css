@@ -353,7 +353,7 @@ header {
 	color            : darkgrey;
 }
 
-.keyword:hover {
+.selected {
 	background-color : white;
 	color            : black;
 	font-weight   	 : 300;
@@ -367,6 +367,7 @@ header {
 	background-color: white;
 	color 					: black;
 }
+
 
 
 
