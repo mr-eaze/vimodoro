@@ -10,8 +10,8 @@ App.Views.User = Backbone.View.extend({
 	},
 
 	events: {
-		'click #user-name': 'setUser',
-		'click #delete-user': 'deleteUser'
+		'click .user': 'setUser',
+		'click .delete-user': 'deleteUser'
 	},
 
 	setUser: function() {

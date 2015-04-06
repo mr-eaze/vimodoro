@@ -17,7 +17,7 @@ App.Views.Users = Backbone.View.extend({
 	},
 
 	events: {
-		'click #user-name': 'hideUsers'
+		'click .user-name': 'hideUsers'
 	},
 
 	hideUsers: function() {

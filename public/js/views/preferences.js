@@ -1,5 +1,7 @@
 App.Views.Preferences = Backbone.View.extend({
+
 	el: '#preferences-view',
+	
 	initialize: function() {
 		console.log('new preferences view created');
 		this.template = Handlebars.compile($('#preferences-template').html());
@@ -35,7 +37,6 @@ App.Views.Preferences = Backbone.View.extend({
 
 	getVideos: function() {
 		console.log('getting videos...');
-		// debugger;
 		var keyword = this.pickRandomInterest();
 		$.ajax({
 			url: '/videos',
@@ -48,7 +49,6 @@ App.Views.Preferences = Backbone.View.extend({
 		})
 		// .done(this.pickOneVideo.bind(this));
 		.done(function(data, status, jqXHR) {
-			// debugger;
 			this.pickOneVideo(data, keyword);
 		}.bind(this));
 	},
