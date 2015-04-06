@@ -247,6 +247,9 @@ header {
 	text-align                 : center; 
 	border-radius              : 5px; 
 	border-bottom            	 : 2px solid lightgrey;
+	border-right				 : 2px solid lightgrey;
+	border-left					 : 2px solid lightgrey;
+	border-top					 : 2px solid lightgrey;
 	background-color         	 : whitesmoke;
 	color                    	 : darkgrey;
 }
@@ -258,7 +261,7 @@ header {
 	border-top       : 2px solid lightgrey;
 	border-left      : 2px solid lightgrey;
 	border-right     : 2px solid lightgrey;
-	border-bottom    : 1px solid lightgrey;
+	border-bottom    : 2px solid lightgrey;
 }
 
 #start-interval-button:active {
