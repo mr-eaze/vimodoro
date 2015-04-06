@@ -18,11 +18,11 @@ App.video = {
 			}
 		})
 		.done(function(data, status, jqXHR) {
-			this.pickOne(data, keyword);
+			this.pickOneOrDiscard(data, keyword);
 		}.bind(this));
 	},
 
-	pickOne: function(data, keyword) {
+	pickOneOrDiscard: function(data, keyword) {
 		console.log('videos gotten');
 		var videos = data.map(function(video) {
 			return {
@@ -31,6 +31,7 @@ App.video = {
 				html: video.embed.html
 			};
 		});
+		
 		var currentBestVideo = {};
 		var currentBestDurationDifference = 60;
 
@@ -41,6 +42,7 @@ App.video = {
 				currentBestDurationDifference = durationDifference;
 			}
 		});
+
 		if (!currentBestVideo.html) {
 			$.cookie(keyword, parseInt($.cookie(keyword))+1);
 			this.get();
