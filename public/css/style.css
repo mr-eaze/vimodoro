@@ -255,7 +255,7 @@ header {
 	color                    	 : darkgrey;
 }
 
-#start-interval-button:hover {
+#start-interval-button.enabled:hover {
 	background-color : white;
 	color            : mediumaquamarine;
 	font-weight   	 : 300;
@@ -265,10 +265,20 @@ header {
 	border-bottom    : 2px solid lightgrey;
 }
 
-#start-interval-button:active {
+#start-interval-button.enabled:active {
 	background-color : mediumaquamarine;
 	color            : white;
 	font-weight   	 : 300;
+}
+
+#start-interval-button.disabled:hover {
+	background-color : white;
+	color            : indianred;
+	font-weight   	 : 300;
+	border-top       : 2px solid lightgrey;
+	border-left      : 2px solid lightgrey;
+	border-right     : 2px solid lightgrey;
+	border-bottom    : 2px solid lightgrey;
 }
 
 .set-times {

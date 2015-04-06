@@ -41,7 +41,9 @@ App.Views.KeywordView = Backbone.View.extend({
 
 	addSelectedClass: function() {
 		App.currentUser.fetch();
-		$('#start-interval-button').prop('disabled', false);
+		$('#start-interval-button').prop('disabled', false)
+															 .removeClass('disabled')
+															 .addClass('enabled');
 		this.$el.addClass('selected');
 	},
 
@@ -63,7 +65,9 @@ App.Views.KeywordView = Backbone.View.extend({
 		this.$el.removeClass('selected');
 		var selectedList = $('.selected');
 		if (!selectedList.length) {
-			$('#start-interval-button').prop('disabled', true);
+			$('#start-interval-button').prop('disabled', true)
+																 .addClass('disabled')
+																 .removeClass('enabled');
 		}
 	}
 
