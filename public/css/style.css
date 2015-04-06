@@ -82,11 +82,12 @@ header {
 
 .user-name {
 	display                   : inline-block;
-	overflow                  : scroll;
+	overflow-x                : scroll;
+	overflow-y                : visible;
 	width                     : 250px;
 	height                    : 60px; 				
-	padding                   : 10px;
-	font-size                 : 2em;
+	padding                   : 9px;
+	font-size                 : 2em; 
 	font-weight               : 200;
 	border-top-left-radius    : 5px;
 	border-bottom-left-radius : 5px;
