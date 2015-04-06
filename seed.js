@@ -3,63 +3,78 @@ var models  = require('./models');
 var User    = models.users;
 var Keyword = models.keywords;
 
-var users = [
-	{
-		name: 'Adam Gallinat',
-		interval: 44,
-		duration: 8,
-	},
-	{
-		name: 'Eric Vince',
-		interval: 33,
-		duration: 5,
-	},
-	{
-		name: 'Mark Smukler',
-		interval: 22,
-		duration: 18,
-	}
-]
+// var users = [
+// 	{
+// 		name: 'Adam Gallinat',
+// 		interval: 44,
+// 		duration: 8,
+// 	},
+// 	{
+// 		name: 'Eric Vince',
+// 		interval: 33,
+// 		duration: 5,
+// 	},
+// 	{
+// 		name: 'Mark Smukler',
+// 		interval: 22,
+// 		duration: 18,
+// 	}
+// ]
 
 var keywords = [
 	{
-		term: 'surfing'
+		term: 'Animation'
 	},
 	{
-		term: 'cats'
+		term: 'Arts'
 	},
 	{
-		term: 'pizza'
+		term: 'Comedy'
 	},
 	{
-		term: 'photography'
+		term: 'Documentary'
 	},
 	{
-		term: 'camping'
+		term: 'Fashion'
 	},
 	{
-		term: 'fashion'
+		term: 'Food'
 	},
 	{
-		term: 'punk'
+		term: 'Music'
 	},
 	{
-		term: 'rap'
+		term: 'Narrative'
 	},
 	{
-		term: 'chinese'
+		term: 'Personal'
+	},
+	{
+		term: 'Journalism'
+	},
+	{
+		term: 'Sports'
+	},
+	{
+		term: 'Surfing'
+	},
+	{
+		term: 'Travel'
+	},
+	{
+		term: 'Video Games'
 	}
 ]
 
 var seedDatabase = function () {
-	users.forEach( function (userData) {
-		User
-			.create({
-				name: 		userData.name,
-				interval: userData.interval,
-				duration: userData.duration
-			});
-	});
+	// users.forEach( function (userData) {
+	// 	User
+	// 		.create({
+	// 			name: 		userData.name,
+	// 			interval: userData.interval,
+	// 			duration: userData.duration
+	// 		});
+	// });
 	keywords.forEach( function (keyword) {
 		Keyword
 			.create({
