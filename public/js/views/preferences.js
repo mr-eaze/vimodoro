@@ -16,7 +16,7 @@ App.Views.Preferences = Backbone.View.extend({
 	},
 
 	events: {
-		'click #start-interval': 'startInterval'
+		'click #start-interval-button': 'startInterval'
 	},
 
 	startInterval: function() {

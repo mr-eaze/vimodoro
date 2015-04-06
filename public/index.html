@@ -47,7 +47,7 @@
 <!-- VIEWS -->
 
 	<div id="login-view"       class="animated fadeInDownBig"></div>
-	<div id="create-user-view" class="animated fadeInUpBig"></div>	
+	<div id="create-user-view" class="animated fadeInUpBig"  ></div>
 	<div id="preferences-view"></div>
 	<div id="timer-view"      ></div>
 	<div id="video-modal-view"></div>
@@ -69,33 +69,38 @@
 	</template>
 
 	<template id="preferences-template">
-		<div id="interval-set">
-			<span>I want to work for</span>
-			<input id="interval-input" type="text" value={{interval}}>
-			<span>minutes</span>
+		<div id="preferences-container">
+			<div id="interval-set" class="set-times">
+				<span class="preferences-text for-time"> Work for </span>
+				<input id="interval-input" class="preferences-input" type="text" onfocus="this.placeholder = ''" value={{interval}}>
+				<span class="preferences-text minutes"> minutes </span>
+			</div>
+			<div id="duration-set" class="set-times">
+				<span class="preferences-text for-time"> Break for </span>
+				<input id="duration-input" class="preferences-input" type="text" onfocus="this.placeholder = ''" value={{duration}}>
+				<span class="preferences-text minutes"> minutes </span>
+			</div>
+			<div id="keyword-container">
+				<div class="interests"> Interested in: </div>
+				<div id="keywords-box"></div>
+			</div>
 		</div>
-		<div id="duration-set">
-			<span>And I want to take</span>
-			<input id="duration-input" type="text" value={{duration}}>
-			<span>minute breaks.</span>
+
+		<div id="preferences-start-button-container">
+			<div id="start-interval-button"> Start </div>
 		</div>
-		<div id="keyword-selector">
-			<span>I'm interested in...</span>
-			<div id="keywords-box"></div>
-		</div>
-		<button id="start-interval">Go!</button>
 	</template>
 
 	<template id="keyword-template">
-		<div id="keyword">{{term}}</div>
+			<div class="keyword">{{term}}</div>
 	</template>
 
 	 <!-- interval-timer template -->
  	<template id="interval-timer-template">
 		<div id="interval-timer">
 			<span id="timer-minutes"  > {{interval}} </span>
-			<span id="timer-semicolon">      :       </span>
-			<span id="timer-seconds"  >      00 		 </span>
+			<span id="timer-semicolon"> :            </span>
+			<span id="timer-seconds"  > 00 		       </span>
 		</div>
 		<button id="go-back-button"></button>
 	</template>		
