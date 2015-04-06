@@ -24,80 +24,9 @@ App.Views.Preferences = Backbone.View.extend({
 			'interval': parseInt($('#interval-input').val()),
 			'duration': parseInt($('#duration-input').val())
 		});
-		this.getVideos();
+		App.video.get();
 		this.$el.hide();
 		App.timer.render();
-		// App.timer.$el.show();
-	},
-
-	pickRandomInterest: function() {
-		var interests = App.currentUser.get('keywords');
-		return interests[Math.floor(Math.random() * interests.length)].term;
-	},
-
-	getVideos: function() {
-		console.log('getting videos...');
-		var keyword = this.pickRandomInterest();
-		$.ajax({
-			url: '/videos',
-			method: 'GET',
-			data: {
-				search_term: keyword,
-				api: 1,
-				page: parseInt($.cookie(keyword))
-			}
-		})
-		// .done(this.pickOneVideo.bind(this));
-		.done(function(data, status, jqXHR) {
-			this.pickOneVideo(data, keyword);
-		}.bind(this));
-	},
-
-	pickOneVideo: function(data, keyword) {
-		console.log('videos gotten');
-		var videos = data.map(function(video) {
-			return {
-				uri: video.uri,
-				duration: video.duration,
-				html: video.embed.html
-			};
-		});
-		var currentBestVideo = {};
-		var currentBestDurationDifference = 60;
-
-		videos.forEach(function(video) {
-			var durationDifference = Math.abs(video.duration - (App.currentUser.get('duration') * 60));
-			if (durationDifference < currentBestDurationDifference) {
-				currentBestVideo = video;
-				currentBestDurationDifference = durationDifference;
-			}
-		}.bind(this));
-		if (!currentBestVideo.html) {
-			$.cookie(keyword, parseInt($.cookie(keyword))+1);
-			this.getVideos();
-		} else {
-			$.cookie(keyword, parseInt($.cookie(keyword))+1);
-			App.currentVideo = currentBestVideo;
-			this.parseVideoHtml();
-		}
-	},
-
-	parseVideoHtml: function() {
-		// App.currentVideo.html;
-		$.ajax({
-			url: 'https://vimeo.com/api/oembed.json',
-			method: 'GET',
-			data: {
-				url: App.currentVideo.html.split('"')[1],
-				autoplay: 1,
-				api: 1,
-				maxwidth: 640,
-				maxheight: 360,
-				player_id: 'player1'
-			}
-		})
-		.done(function(data) {
-			App.currentVideo = data;
-		});
 	}
+
 });
