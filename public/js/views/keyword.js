@@ -5,7 +5,7 @@ App.Views.KeywordView = Backbone.View.extend({
 	events: {
 		'click': 'toggleSelect'
 	},
-	
+
 	initialize: function() {
 		console.log('new keyword view created');
 		this.template = Handlebars.compile($('#keyword-template').html());
@@ -41,6 +41,7 @@ App.Views.KeywordView = Backbone.View.extend({
 
 	addSelectedClass: function() {
 		App.currentUser.fetch();
+		$('#start-interval-button').prop('disabled', false);
 		this.$el.addClass('selected');
 	},
 
@@ -60,6 +61,10 @@ App.Views.KeywordView = Backbone.View.extend({
 	removeSelectedClass: function() {
 		App.currentUser.fetch();
 		this.$el.removeClass('selected');
+		var selectedList = $('.selected');
+		if (!selectedList.length) {
+			$('#start-interval-button').prop('disabled', true);
+		}
 	}
 
 });

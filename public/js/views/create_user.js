@@ -4,16 +4,17 @@ App.Views.createUser = Backbone.View.extend({
 
 	initialize: function() {
 		console.log('create user view created');
-		this.template = Handlebars.compile( $('#create-user-template').html() );
+		this.template = Handlebars.compile($('#create-user-template').html());
 		this.render();
 	},
 
 	render: function() {
-		this.$el.append( this.template );
+		this.$el.append(this.template);
 	},
 
 	events: {
-		'click #create-user-button': 'createUser',
+		'keypress': 'enterButton',
+		'click #create-user-button': 'createUser'
 	},
 
 	createUser: function() {
@@ -23,6 +24,12 @@ App.Views.createUser = Backbone.View.extend({
 		App.currentUser = App.users.findWhere({name:newUser});
 		this.$el.hide();
 		App.usersView.$el.hide();
-		App.preferences.render();
+		App.preferences = new App.Views.Preferences({model: App.currentUser});
+	},
+
+	enterButton: function(e) {
+		if (e.keyCode === 13) {
+			this.createUser();
+		}
 	}
 });

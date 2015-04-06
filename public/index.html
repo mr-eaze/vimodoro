@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title> vimodoro </title>
+	<title>vimodoro</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animate.css">
   <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>		
@@ -15,7 +15,7 @@
 	<script src="js/models/user.js"></script>
 	<script src="js/collections/keywords.js"></script>
 	<script src="js/collections/users.js"></script>
-	<script src="js/routers/router.js"></script>
+	<script src="js/video.js"></script>
 	<script src="js/views/preferences.js"></script>
 	<script src="js/views/keyword.js"></script>
 	<script src="js/views/keywords.js"></script>
@@ -58,49 +58,47 @@
 
 	<template id='user-preview-template' class='user'>
 		<div class='user'>
-			<span class='user-name'  > {{name}} </span>
-			<span class="delete-user"> X        </span>
+			<span class='user-name'>{{name}}</span>
+			<span class="delete-user">X</span>
 		</div>
 	</template>
 
 	<template id='create-user-template'>
 		<input type="text" name='new-name' id='name-input' placeholder='Create New User' onfocus="this.placeholder = ''" autocomplete='off' maxlength="20">
-		<span id='create-user-button'> + </span>
+		<span id='create-user-button'>+</span>
 	</template>
 
 	<template id="preferences-template">
 		<div id="preferences-container">
 			<div id="interval-set" class="set-times">
-				<span class="preferences-text for-time"> Work for </span>
+				<span class="preferences-text for-time">Work for</span>
 				<input id="interval-input" class="preferences-input" type="text" onfocus="this.placeholder = ''" value={{interval}}>
-				<span class="preferences-text minutes"> minutes </span>
+				<span class="preferences-text minutes">minutes</span>
 			</div>
 			<div id="duration-set" class="set-times">
-				<span class="preferences-text for-time"> Break for </span>
+				<span class="preferences-text for-time">Break for</span>
 				<input id="duration-input" class="preferences-input" type="text" onfocus="this.placeholder = ''" value={{duration}}>
-				<span class="preferences-text minutes"> minutes </span>
+				<span class="preferences-text minutes">minutes</span>
 			</div>
 			<div id="keyword-container">
-				<div class="interests"> Interested in: </div>
+				<div class="interests">Interested in:</div>
 				<div id="keywords-box"></div>
 			</div>
 		</div>
 
 		<div id="preferences-start-button-container">
-			<div id="start-interval-button"> Start </div>
+			<button id="start-interval-button" disabled>Start</button>
 		</div>
 	</template>
 
-	<template id="keyword-template">
-			<div>{{term}}</div>
-	</template>
+	<template id="keyword-template">{{term}}</template>
 
 	 <!-- interval-timer template -->
  	<template id="interval-timer-template">
 		<div id="interval-timer">
-			<span id="timer-minutes"  > {{interval}} </span>
-			<span id="timer-semicolon"> :            </span>
-			<span id="timer-seconds"  > 00 		       </span>
+			<span id="timer-minutes">{{interval}}</span>
+			<span id="timer-semicolon">:</span>
+			<span id="timer-seconds">00</span>
 		</div>
 		<button id="go-back-button"></button>
 	</template>		
@@ -108,9 +106,7 @@
 	 <!-- video modal -->
 	<template id="video-modal-template">
 		<div id="modal-background">
-			<div id="video-container">
-				{{{html}}}
-			</div>
+			<div id="video-container">{{{html}}}</div>
 		</div>
 	</template>
 
