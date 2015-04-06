@@ -363,6 +363,11 @@ header {
 	border-bottom    : 1px solid lightgrey;
 }
 
+.selected {
+	background-color: white;
+	color 					: black;
+}
+
 
 
 
