@@ -268,10 +268,10 @@ header {
 	background-color : white;
 	color            : indianred;
 	font-weight   	 : 300;
-	border-top       : 1px solid lightgrey;
-	border-left      : 1px solid lightgrey;
-	border-right     : 1px solid lightgrey;
-	border-bottom    : 2px solid lightgrey;
+	border-top       : 2px solid lightgrey;
+	border-left      : 2px solid lightgrey;
+	border-right     : 2px solid lightgrey;
+	border-bottom    : 1px solid lightgrey;
 }
 
 .set-times {
