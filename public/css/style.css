@@ -16,27 +16,6 @@ body {
 	background-color : deepskyblue;
 }
 
-#intro-page {
-	position         : absolute;
-	width            : 100%;
-	height           : 100%;
-	background-color : deepskyblue;
-	opacity          : .7;
-}
-
-#intro-container {
-	position   : relative;
-	display    : block;
-	width      : 500px;
-	margin     : auto;
-	margin-top : 500px;
-}
-
-.white-logo {
-	width  : 500px;
-	margin : auto;
-}
-
 header {
 	top                     : 0;
 	width                   : 100%;
@@ -63,17 +42,31 @@ header {
  	----------------
 */ 
 
-#login-view {
-	overflow                   : scroll;
+#login-container {
 	width                      : 500px;
-	height                     : 440px;
+	height                     : 450px;
 	margin                     : auto;
-	padding                    : 50px;
+	padding                    : 25px;
 	background-color           : white;
 	border-top-left-radius     : 10px;
 	border-top-right-radius    : 10px;
 	border-bottom              : 3px solid deepskyblue;
 	-webkit-animation-duration : 1s;
+}
+
+#login-view {
+	overflow                   : scroll;
+	width                      : 100%;
+	height                     : 100%;
+	margin 					           : auto;
+	border-top-left-radius     : 7px;
+	border-top-right-radius    : 7px;
+	border-bottom-left-radius  : 2px;
+	border-bottom-right-radius : 2px;
+	border-top                 : 2px solid lightgrey;
+	border-left                : 2px solid lightgrey;
+	border-right               : 2px solid lightgrey;
+	border-bottom              : 1px solid lightgrey;
 }
 
 .user {
@@ -218,41 +211,41 @@ header {
 */ 
 
 #preferences-container {
-	width                      : 500px;
-	height                     : 440px;
-	margin                     : auto;
-	padding                    : 20px;
-	background-color           : white;
-	border-top-left-radius     : 10px;
-	border-top-right-radius    : 10px;
-	border-bottom              : 3px solid deepskyblue;
+	width                   : 500px;
+	height                  : 450px;
+	margin                  : auto;
+	padding                 : 25px;
+	background-color        : white;
+	border-top-left-radius  : 10px;
+	border-top-right-radius : 10px;
+	border-bottom           : 3px solid deepskyblue;
 }
 
 #preferences-start-button-container {
 	width            					 : 500px;
 	height           					 : 120px;
 	margin           					 : auto;
-	padding          					 : 20px 20px;
+	padding          					 : 20px;
 	background-color 					 : white;
 	border-bottom-left-radius  : 10px;
 	border-bottom-right-radius : 10px;
 }
 
 #start-interval-button {
-	display                    : inline-block;
-	width                    	 : 100%;
-	height                     : 100%; 				
-	padding                  	 : 10px;
-	font-size                	 : 3em;
-	font-weight              	 : 200;
-	text-align                 : center; 
-	border-radius              : 5px; 
-	border-bottom            	 : 2px solid lightgrey;
-	border-right				 			 : 1px solid lightgrey;
-	border-left					  		 : 1px solid lightgrey;
-	border-top					 			 : 1px solid lightgrey;
-	background-color         	 : whitesmoke;
-	color                    	 : darkgrey;
+	display          : inline-block;
+	width            : 100%;
+	height           : 100%; 				
+	padding          : 10px;
+	font-size        : 3em;
+	font-weight      : 200;
+	text-align       : center; 
+	border-radius    : 5px; 
+	border-bottom    : 2px solid lightgrey;
+	border-right     : 0px;
+	border-left	     : 0px;
+	border-top	     : 0px;
+	background-color : whitesmoke;
+	color            : darkgrey;
 }
 
 #start-interval-button.enabled:hover {
@@ -335,7 +328,7 @@ header {
 	display     : inline-block;
 	width       : 100%;
 	height      : 30px;
-	margin      : 0 0 5px;
+	margin      : 0 0 3px;
 	text-align  : center; 
 	font-size   : 1.25em; 
 	line-height : 30px;
@@ -344,8 +337,8 @@ header {
 
 #keywords-box {
 	overflow         : scroll;
-	width            : 400px;
-	height           : 215px;
+	width            : 100%;
+	height           : 225px;
 	border-radius    : 5px;
 	border-top       : 2px solid lightgrey;
 	border-left      : 2px solid lightgrey;
@@ -355,9 +348,9 @@ header {
 }
 
 .keyword {
-	width            : 90%;
-	height           : 40px;
-	margin           : 15px auto; 
+	width            : 95%;
+	height           : 45px;
+	margin           : 10px auto; 
 	text-align       : center;
 	font-size        : 1.25em;
 	font-weight   	 : 200;
