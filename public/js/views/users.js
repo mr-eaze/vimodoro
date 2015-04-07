@@ -3,7 +3,7 @@ App.Views.Users = Backbone.View.extend({
 	el: '#login-view',
 
 	initialize: function() {
-		console.log('New User Preview Created');
+		console.log('New User List View Created');
 		this.listenTo(this.collection, 'sync', this.renderAll);
 		App.createUserView = new App.Views.createUser();
 	},

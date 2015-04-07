@@ -12,7 +12,6 @@ App.video = {
 			url: '/categories/' + keyword + '/videos',
 			method: 'GET',
 			data: {
-				// api: 1,
 				page: parseInt($.cookie(keyword))
 			}
 		})
