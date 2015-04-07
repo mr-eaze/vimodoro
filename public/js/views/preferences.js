@@ -27,7 +27,7 @@ App.Views.Preferences = Backbone.View.extend({
 		});
 		App.video.get();
 		this.$el.hide();
-		App.timer.render();
+		App.timer = new App.Views.IntervalTimer();
 	}
 
 });
