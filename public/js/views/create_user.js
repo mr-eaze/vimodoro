@@ -23,18 +23,13 @@ App.Views.createUser = Backbone.View.extend({
 		App.users.create(newUserModel);
 		App.currentUser = App.users.findWhere({name:newUser});
 		this.$el.hide();
-		App.usersView.$el.hide();
+		$('#login-container').hide();
 		App.preferences = new App.Views.Preferences({model: App.currentUser});
-		this.hideLoginContainer();
 	},
 
 	enterButton: function(e) {
 		if (e.keyCode === 13) {
 			this.createUser();
 		}
-	},
-
-	hideLoginContainer: function() {
-		$('#login-container').hide();
 	}
 });
