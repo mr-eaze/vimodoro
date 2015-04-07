@@ -1,7 +1,6 @@
 * {
   box-sizing  : border-box;
   font-family : lato;
-  cursor: default;
 }
 
 .hidden {
@@ -29,6 +28,7 @@ header {
 	width            : 300px;
 	margin           : auto; 
 	background-color : deepskyblue;
+	cursor 					 : pointer;
 }
 
 .nobg-logo {
@@ -72,6 +72,7 @@ header {
 .user {
 	margin : 25px auto;
 	width  : 300px;
+	cursor : default;
 }
 
 .user-name {
@@ -359,6 +360,7 @@ header {
 	border-radius    : 5px;
 	background-color : whitesmoke;
 	color            : darkgrey;
+	cursor 					 : default;
 }
 
 .selected {
@@ -387,6 +389,7 @@ header {
 	width 					: 500px;
 	margin 					: 0 auto;
 	text-align 			: center;
+	cursor 					: default;
 }
 
 #timer-view span {
