@@ -27,7 +27,7 @@ app.use( express.static( path.join( application_root, 'browser' )))
 module.exports = app;
 
 // USER ROUTES
-// Request 50 videos with query 'search_term'
+// Request 50 videos with query req.params.category
 app.get('/categories/:category/videos', function(req, res) {
 	lib.request({
 		method: 'GET',
@@ -58,7 +58,9 @@ app.get('/users', function(req, res) {
 
 app.get('/users/:id', function(req, res) {
 	User.findOne({where:
-		{id: req.params.id}, include: [Keyword]})
+		{id: req.params.id},
+		include: [Keyword]
+	})
 		.then(function(user) {
 			res.send(user);
 		}); 
@@ -124,7 +126,10 @@ app.get('/keywords', function(req, res) {
 });
 
 app.get('/keywords/:id', function(req, res) {
-	Keyword.findOne({where: {id: req.params.id}, include:[User]})
+	Keyword.findOne({where: 
+		{id: req.params.id},
+		include: [User]
+	})
 		.then(function(keyword) {
 			res.send(keyword);
 		});

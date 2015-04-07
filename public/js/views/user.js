@@ -6,7 +6,7 @@ App.Views.User = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html(this.template(this.model.toJSON()));
+		this.$el.html(this.template( this.model.toJSON() ) );
 	},
 
 	events: {
@@ -16,7 +16,6 @@ App.Views.User = Backbone.View.extend({
 
 	setUser: function() {
 		App.currentUser = this.model;
-		App.usersView.$el.hide();
 		App.createUserView.$el.hide();
 		App.preferences = new App.Views.Preferences({model: App.currentUser});
 		this.hideLoginContainer();
