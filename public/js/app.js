@@ -1,14 +1,7 @@
 var App = {
 	Models: {},
 	Collections: {},
-	Views: {},
-	Routers: {},
-};
-
-App.saveCookie = function() {
-	App.keywords.each(function(keyword) {
-		$.cookie(keyword.get('uri'), '1');
-	});
+	Views: {}
 };
 
 $(function() {
@@ -17,3 +10,9 @@ $(function() {
 	App.usersView = new App.Views.Users({collection: App.users});
 	App.keywords = new App.Collections.Keywords();
 });
+
+App.saveCookie = function() {
+	App.keywords.each(function(keyword) {
+		$.cookie(keyword.get('uri'), '1');
+	});
+};

@@ -17,17 +17,13 @@ App.Views.User = Backbone.View.extend({
 	setUser: function() {
 		App.currentUser = this.model;
 		App.createUserView.$el.hide();
+		$('#login-container').hide();
 		App.preferences = new App.Views.Preferences({model: App.currentUser});
-		this.hideLoginContainer();
 	},
 
 	deleteUser: function() {
 		console.log('deleting user');
 		this.model.destroy();
 		this.remove();
-	},
-
-	hideLoginContainer: function() {
-		$('#login-container').hide();
 	}
 });

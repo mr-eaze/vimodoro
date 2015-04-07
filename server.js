@@ -31,7 +31,7 @@ module.exports = app;
 app.get('/categories/:category/videos', function(req, res) {
 	lib.request({
 		method: 'GET',
-		path: '/categories/' + req.params.category + '/videos', //vimeo.api/videos
+		path: '/categories/' + req.params.category + '/videos', //vimeo.api/categories/{category}/videos
 		query: {
 			page: req.query.page,
 			per_page: 50,
@@ -117,7 +117,7 @@ app.put('/users/:id/remove_keyword', function(req, res) {
 });
 
 
-// KEYWORD ROUTES
+// KEYWORD ROUTES --> NOT CURRENTLY IN USE
 app.get('/keywords', function(req, res) {
 	Keyword.findAll({include: User})
 		.then(function(keywords) {

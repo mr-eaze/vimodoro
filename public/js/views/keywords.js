@@ -1,9 +1,12 @@
 App.Views.KeywordsView = Backbone.View.extend({
+
 	el: '#keywords-box',
+
 	initialize: function() {
 		console.log('new keywords collection view created');
 		this.renderAll();
 	},
+
 	renderAll: function() {
 		this.collection.each(this.renderOne, this);
 		if (!$('.selected').length) {
@@ -14,6 +17,7 @@ App.Views.KeywordsView = Backbone.View.extend({
 																 .prop('disabled', false);
 		}
 	},
+
 	renderOne: function(model) {
 		var keyword = new App.Views.KeywordView({model: model});
 		// keyworduserlist: the list of users of a particular keyword
@@ -29,4 +33,5 @@ App.Views.KeywordsView = Backbone.View.extend({
 		}
 		this.$el.append(keyword.el);
 	}
+	
 });

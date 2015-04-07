@@ -10,8 +10,7 @@ App.Views.Preferences = Backbone.View.extend({
 
 	render: function() {
 		var html = this.template(App.currentUser.toJSON());
-		$('#preferences-view').html('');
-		$('#preferences-view').append(html);
+		this.$el.html(html);
 		App.keywordsView = new App.Views.KeywordsView({collection: App.keywords});
 		this.$el.show();
 	},

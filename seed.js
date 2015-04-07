@@ -92,7 +92,7 @@ var seedDatabase = function () {
 	users.forEach( function (userData) {
 		User
 			.create({
-				name		: userData.name,
+				name	: userData.name,
 				interval: userData.interval,
 				duration: userData.duration
 			});
