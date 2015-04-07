@@ -9,6 +9,7 @@ App.Views.IntervalTimer = Backbone.View.extend({
 	initialize: function() {
 		console.log('Interval Timer View launched');
 		this.template = Handlebars.compile($('#interval-timer-template').html());
+		// this.render();
 	},
 
 	render: function() {
@@ -38,18 +39,23 @@ App.Views.IntervalTimer = Backbone.View.extend({
 			} else {
 				seconds -= 1;
 				$('#timer-seconds').html(seconds = seconds < 10 ? "0" + seconds : seconds);
+				console.log('second');
 			};
 		}.bind(this), 1000);
 	},
 
-	launchVideo: function() {
+	stopTimer: function() {
 		clearInterval(this.timer);
+	},
+
+	launchVideo: function() {
+		this.stopTimer();
 		this.$el.hide();
 		App.modal = new App.Views.VideoModal();
 	},
 
 	goBack: function() {
-		clearInterval(this.timer);
+		this.stopTimer();
 		this.$el.hide();
 		App.preferences.$el.show();
 	}

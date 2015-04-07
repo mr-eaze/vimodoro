@@ -9,6 +9,7 @@ App.Views.Users = Backbone.View.extend({
 	},
 
 	renderAll: function() {
+		this.$el.html('');
 		this.collection.each(this.renderOne, this);
 	},
 

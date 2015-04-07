@@ -6,6 +6,9 @@ App.Views.Preferences = Backbone.View.extend({
 		console.log('new preferences view created');
 		this.template = Handlebars.compile($('#preferences-template').html());
 		this.render();
+		this.listenTo(App.users, 'sync', function() {
+			App.router.navigate('pref/' + App.currentUser.get('id'));
+		});
 	},
 
 	render: function() {

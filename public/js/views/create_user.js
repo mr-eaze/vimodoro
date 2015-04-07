@@ -19,12 +19,13 @@ App.Views.createUser = Backbone.View.extend({
 
 	createUser: function() {
 		var newUser = $('#name-input').val();
-		var newUserModel = new App.Models.User({name:newUser});
-		App.users.create(newUserModel);
+		$('#name-input').val('');
+		$('#name-input').prop('placeholder', 'Create New User');
+		App.users.create(new App.Models.User({name: newUser}));
 		App.currentUser = App.users.findWhere({name:newUser});
 		this.$el.hide();
 		App.usersView.$el.hide();
-		App.preferences = new App.Views.Preferences({model: App.currentUser});
+		App.preferences = new App.Views.Preferences();
 	},
 
 	enterButton: function(e) {

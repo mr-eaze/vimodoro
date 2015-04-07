@@ -18,7 +18,8 @@ App.Views.User = Backbone.View.extend({
 		App.currentUser = this.model;
 		App.usersView.$el.hide();
 		App.createUserView.$el.hide();
-		App.preferences = new App.Views.Preferences({model: App.currentUser});
+		App.preferences = new App.Views.Preferences();
+		App.router.navigate('/pref/' + App.currentUser.get('id'));
 	},
 
 	deleteUser: function() {
