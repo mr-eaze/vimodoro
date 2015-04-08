@@ -45,7 +45,7 @@
 	<div id="create-user-view" class="animated fadeInUpBig"  ></div>
 	<div id="preferences-view"></div>
 	<div id="timer-view"      ></div>
-	<div id="video-modal-view"></div>
+	<div id="video-modal-view" class="hidden animated fadeIn"></div>
 
 
 <!-- TEMPLATES -->
@@ -89,12 +89,16 @@
 
 	 <!-- interval-timer template -->
  	<template id="interval-timer-template">
-		<div id="interval-timer">
-			<span id="timer-minutes">{{interval}}</span>
-			<span id="timer-semicolon">:</span>
-			<span id="timer-seconds">00</span>
+		<div id="timer-container" class="animated slideInLeft">
+			<div id="timer-inner-border">
+				<span id="timer-minutes"   class="time-text">{{interval}}</span>
+				<span id="timer-semicolon" class="time-text">:</span>
+				<span id="timer-seconds"   class="time-text">00</span>
+			</div>
 		</div>
+		<div id="go-back-button-container" class="animated slideInRight">
 		<button id="go-back-button">Back to Preferences</button>
+		</div>
 	</template>		
 
 	 <!-- video modal -->

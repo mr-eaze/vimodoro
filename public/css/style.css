@@ -153,7 +153,7 @@ header {
 	border-bottom            	: 2px solid lightgrey;
 	background-color         	: whitesmoke;
 	color                    	: darkgrey;
-  outline: none;
+  outline                   : none;
 }
 
 #name-input:hover {
@@ -258,12 +258,6 @@ header {
 	border-bottom    : 1px solid lightgrey;
 }
 
-#start-interval-button.enabled:active {
-	background-color : mediumaquamarine;
-	color            : white;
-	font-weight   	 : 300;
-}
-
 #start-interval-button.disabled:hover {
 	background-color : white;
 	color            : indianred;
@@ -292,7 +286,6 @@ header {
 	text-align   : left;
 	padding-left : 10px;
 }
-
 
 .preferences-text {
 	display     : inline-block;
@@ -336,15 +329,18 @@ header {
 }
 
 #keywords-box {
-	overflow         : scroll;
-	width            : 100%;
-	height           : 225px;
-	border-radius    : 5px;
-	border-top       : 2px solid lightgrey;
-	border-left      : 2px solid lightgrey;
-	border-right     : 2px solid lightgrey;
-	border-bottom    : 1px solid lightgrey;
-	margin 					 : auto;
+	width                      : 100%;
+	height                     : 225px;
+	margin 					           : auto;
+	overflow                   : scroll;
+	border-top-left-radius     : 7px;
+	border-top-right-radius    : 7px;
+	border-bottom-left-radius  : 2px;
+	border-bottom-right-radius : 2px;
+	border-top                 : 2px solid lightgrey;
+	border-left                : 2px solid lightgrey;
+	border-right               : 2px solid lightgrey;
+	border-bottom              : 1px solid lightgrey;
 }
 
 .keyword {
@@ -378,9 +374,9 @@ header {
 
 
 /* 
-	---------------
+	---------
  	* timer *
- 	---------------
+ 	---------
 */ 
 
 #timer-view {
@@ -389,26 +385,61 @@ header {
 	text-align 			: center;
 }
 
-#timer-view span {
-	font-size: 190px;
+#timer-container {
+	width                      : 500px;
+	height                     : 250px;
+	margin                     : auto;
+	padding                    : 25px;
+	background-color           : white;
+	border-top-left-radius     : 10px;
+	border-top-right-radius    : 10px;
+	border-bottom              : 3px solid deepskyblue;
+	-webkit-animation-duration : 1s;
+}
+
+#timer-inner-border {
+	width                      : 100%;
+	height                     : 100%;
+	margin 					           : auto;
+	border-top-left-radius     : 7px;
+	border-top-right-radius    : 7px;
+	border-bottom-left-radius  : 2px;
+	border-bottom-right-radius : 2px;
+	border-top                 : 2px solid lightgrey;
+	border-left                : 2px solid lightgrey;
+	border-right               : 2px solid lightgrey;
+	border-bottom              : 1px solid lightgrey;
+}
+
+.time-text {
+	font-size: 150px;
+}
+
+#go-back-button-container {
+	width            					 : 500px;
+	height           					 : 120px;
+	margin           					 : auto;
+	padding          					 : 20px;
+	background-color 					 : white;
+	border-bottom-left-radius  : 10px;
+	border-bottom-right-radius : 10px;
 }
 
 #go-back-button {
-	display                    : inline-block;
-	width                    	 : 60%;
-	height                     : 60%; 				
-	padding                  	 : 10px;
-	margin-top  							 : 40px;
-	font-size                	 : 1em;
-	font-weight              	 : 200;
-	text-align                 : center; 
-	border-radius              : 5px; 
-	border-bottom            	 : 2px solid lightgrey;
-	border-right				 : 1px solid lightgrey;
-	border-left					 : 1px solid lightgrey;
-	border-top					 : 1px solid lightgrey;
-	background-color         	 : whitesmoke;
-	color                    	 : darkgrey;
+	display          : inline-block;
+	background-color : whitesmoke;
+	color            : darkgrey;
+	width            : 100%;
+	height           : 100%; 				
+	font-size        : 2em;
+	font-weight      : 200;
+	text-align       : center; 
+	outline          : none;
+	border-radius    : 5px; 
+	border-bottom    : 2px solid lightgrey;
+	border-right     : 0px;
+	border-left	     : 0px;
+	border-top	     : 0px;
 }
 
 #go-back-button:hover {
@@ -421,22 +452,21 @@ header {
 	border-bottom    : 1px solid lightgrey;
 }
 
-#go-back-button:active {
-	background-color : mediumaquamarine;
-	color            : white;
-	font-weight   	 : 300;
-}
 
 /* 
-	---------------
+	--------------
  	* video view *
- 	---------------
+ 	--------------
 */ 
 
 #video-modal-view {
-	width: 700px;
-	margin: 0 auto;
-	text-align: center;
+	width            : 690px;
+	height           : 410px;
+	margin           : 0 auto;
+	padding          : 25px; 
+	text-align       : center;
+	background-color : white;
+	border-radius    : 10px; 
 }
 
 
