@@ -4,6 +4,7 @@ App.Views.VideoModal = Backbone.View.extend({
 
 	initialize: function() {
 		this.template = Handlebars.compile( $('#video-modal-template').html() );
+		$('#video-modal-view').removeClass('hidden');
 		this.renderView();
 	},
 
