@@ -444,7 +444,7 @@ header {
 
 #go-back-button:hover {
 	background-color : white;
-	color            : mediumaquamarine;
+	color            : black;
 	font-weight   	 : 300;
 	border-top       : 2px solid lightgrey;
 	border-left      : 2px solid lightgrey;
@@ -461,7 +461,6 @@ header {
 
 #video-modal-view {
 	width            : 690px;
-	height           : 410px;
 	margin           : 0 auto;
 	padding          : 25px; 
 	text-align       : center;
